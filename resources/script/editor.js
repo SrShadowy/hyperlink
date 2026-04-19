@@ -24,6 +24,14 @@ const FA_ICONS = [
 
 const debouncedUpdatePreview = debounce(atualizarPreview, 200);
 
+document.body.addEventListener("input", e => {
+  if (e.target.id.startsWith("pn-")) {
+    const folder = e.target.closest(".folder-card");
+    const title = folder.querySelector(".folder-title");
+    if (title) title.textContent = e.target.value || "Nova Pasta";
+  }
+});
+
 document.querySelectorAll(".tab").forEach(btn => {
   btn.addEventListener("click", () => {
     document.querySelectorAll(".tab").forEach(b => b.classList.remove("active"));
@@ -207,6 +215,37 @@ function iconPickerHTML(fieldId, currentValue = "") {
 document.body.addEventListener("click", e => {
   const action = e.target.closest("[data-action]")?.dataset.action;
 
+
+  if (action === "collapse") {
+   
+    const folder = e.target.closest(".folder-card");
+    if (!folder) return;
+
+    folder.classList.toggle("collapsed");
+
+    console.log("collapse / decollapse pasta");
+
+    const icon = folder.querySelector('[data-action="collapse"] i');
+    if (icon) {
+      icon.classList.toggle("fa-caret-up");
+      icon.classList.toggle("fa-caret-down");
+    }
+
+    return;
+  }
+
+  if (action === "move-up" || action === "move-down") {
+
+    console.log("Mover:", action);
+    const item = e.target.closest(".card, .folder-card, .link-row");
+
+    if (!item) return;
+
+    moveElement(item, action === "move-up" ? "up" : "down");
+    debouncedUpdatePreview();
+    return;
+  } 
+
   if (action === "remove-rede" || action === "remove-pasta" || action === "remove-sublink" || action === "remove-directlink") {
     e.target.closest(".card, .folder-card, .link-row").remove();
     debouncedUpdatePreview();
@@ -265,7 +304,28 @@ function addRede(data = {}) {
 //#endregion
 
 // #region PASTAS_LINKS
+
+
+
+
 document.getElementById("btn-add-pasta").addEventListener("click", () => addPasta());
+
+document.getElementById("btn-add-dl").addEventListener("click", () => addDirectLink());
+
+
+function moveElement(el, direction) {
+  const parent = el.parentElement;
+  console.log(parent, el, direction);
+
+  if (direction === "up" && el.previousElementSibling) {
+    parent.insertBefore(el, el.previousElementSibling);
+  }
+
+  if (direction === "down" && el.nextElementSibling) {
+    parent.insertBefore(el.nextElementSibling, el);
+  }
+}
+
 
 function addPasta(data = {}) {
   const id = generateId();
@@ -273,35 +333,65 @@ function addPasta(data = {}) {
   const div = document.createElement("div");
   div.className = "folder-card";
   div.id = `pasta-${id}`;
+
   div.innerHTML = `
-    <div class="two-col">
-      <div class="field-group">
-        <label>Nome da Pasta</label>
-        <input id="pn-${id}" type="text" value="${escapeHTML(data.nome)}" placeholder="Nome da pasta">
+    <!-- HEADER -->
+    <div class="folder-header">
+      <div class="folder-controls">
+        <button class="btn btn-move" data-action="collapse">
+          <i class="fas fa-caret-up"></i>
+        </button>
+        <button class="btn btn-move" data-action="move-up">
+          <i class="fas fa-arrow-up"></i>
+        </button>
+        <button class="btn btn-move" data-action="move-down">
+          <i class="fas fa-arrow-down"></i>
+        </button>
       </div>
-      <div class="field-group">
-        <label>Tópico</label>
-        <input id="pt-${id}" type="text" value="${escapeHTML(data.topic)}" placeholder="Guia">
+
+      <div class="folder-title">
+        ${escapeHTML(data.nome || "Nova Pasta")}
       </div>
     </div>
-    <div class="field-group">
-      <label>Ícone da Pasta (arquivo em resources/icons/)</label>
-      <input id="pi-${id}" type="text" value="${escapeHTML(data.Icon)}" placeholder="MHWilds.png">
+
+    <div class="folder-body">
+      <div class="two-col">
+        <div class="field-group">
+          <label>Nome da Pasta</label>
+          <input id="pn-${id}" type="text" value="${escapeHTML(data.nome)}">
+        </div>
+
+        <div class="field-group">
+          <label>Tópico</label>
+          <input id="pt-${id}" type="text" value="${escapeHTML(data.topic)}">
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label>Ícone da Pasta</label>
+        <input id="pi-${id}" type="text" value="${escapeHTML(data.Icon)}">
+      </div>
+
+      <p class="sub-title">Links dentro desta pasta</p>
+      <div id="slinks-${id}"></div>
+
+      <div class="flex-end">
+        <button class="btn btn-add" data-action="add-sublink" data-pasta-id="${id}">
+          <i class="fas fa-plus"></i> Adicionar link
+        </button>
+
+        <button class="btn btn-danger" data-action="remove-pasta">
+          <i class="fas fa-trash"></i>
+        </button>
+      </div>
+
     </div>
-    <p class="sub-title">Links dentro desta pasta</p>
-    <div id="slinks-${id}"></div>
-    <div class="flex-end">
-      <button class="btn btn-add" data-action="add-sublink" data-pasta-id="${id}">
-        <i class="fas fa-plus"></i> Adicionar link
-      </button>
-      <button class="btn btn-danger" data-action="remove-pasta">
-        <i class="fas fa-trash"></i> Remover pasta
-      </button>
-    </div>`;
+  `;
 
   document.getElementById("pastas-list").appendChild(div);
   (data.links || []).forEach(l => addSubLink(id, l));
 }
+
 
 function addSubLink(pid, data = {}) {
   const sid = generateId();
@@ -311,6 +401,12 @@ function addSubLink(pid, data = {}) {
   div.id = uid;
   div.innerHTML = `
     <div class="two-col">
+      <div>
+        <button class="btn btn-move" data-action="move-up"><i class="fas fa-arrow-up"></i></button>
+        <button class="btn btn-move" data-action="move-down"><i class="fas fa-arrow-down"></i></button>
+      </div>
+      <div> </div>
+
       <div class="field-group">
         <label>Nome</label>
         <input id="${uid}-n" type="text" value="${escapeHTML(data.nome)}" placeholder="Great Sword">
@@ -332,8 +428,6 @@ function addSubLink(pid, data = {}) {
   document.getElementById(`slinks-${pid}`).appendChild(div);
 }
 
-document.getElementById("btn-add-dl").addEventListener("click", () => addDirectLink());
-
 
 function addDirectLink(data = {}) {
   const id = generateId();
@@ -342,6 +436,13 @@ function addDirectLink(data = {}) {
   div.id = `dl-${id}`;
   div.innerHTML = `
     <div class="two-col">
+
+        <div>
+          <button class="btn btn-move" data-action="move-up"><i class="fas fa-arrow-up"></i></button>
+          <button class="btn btn-move" data-action="move-down"><i class="fas fa-arrow-down"></i></button>
+        </div>
+        <div> </div>
+
       <div class="field-group">
         <label>Nome</label>
         <input id="dln-${id}" type="text" value="${escapeHTML(data.nome)}" placeholder="Discord Oficial">

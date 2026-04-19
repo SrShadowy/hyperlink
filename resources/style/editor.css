@@ -337,6 +337,26 @@ textarea { resize: vertical; min-height: 70px; line-height: 1.5; }
 
 .sub-title { font-size: 13px; font-weight: 500; color: #888; margin: 14px 0 8px; }
 
+.folder-card.collapsed .folder-body {
+  display: none;
+}
+
+.folder-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.folder-controls {
+  display: flex;
+  gap: 5px;
+}
+
+.folder-title {
+  font-weight: bold;
+}
+
+
 /* ---------- Buttons ---------- */
 .btn {
   display: inline-flex;
@@ -422,3 +442,4 @@ textarea { resize: vertical; min-height: 70px; line-height: 1.5; }
   .preview-panel { display: none; }
   .editor-panel  { padding: 1.5rem 1rem 3rem; }
 }
+
