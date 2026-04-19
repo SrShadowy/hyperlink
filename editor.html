@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor de Perfil - Linktree Custom</title>
+    <link rel="stylesheet" href="./resources/style/editor.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="page-layout">
+
+        <!-- PREVIEW (esquerda) -->
+        <aside class="preview-panel">
+            <p class="preview-label">Preview</p>
+            <div class="phone-frame">
+                <div class="preview-container dark-theme" id="preview-root">
+                    <button class="preview-theme-toggle" id="preview-theme-btn" title="Alternar tema">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <img id="pv-foto" class="pv-profile" src="" alt="" onerror="this.style.display='none'">
+                    <h1 id="pv-nome" class="pv-name"></h1>
+                    <p id="pv-desc" class="pv-desc"></p>
+                    <div id="pv-redes" class="pv-redes"></div>
+                    <div id="pv-conteudo" class="pv-conteudo"></div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- EDITOR (direita) -->
+        <main class="editor-panel">
+
+            <header class="editor-header">
+                <h1>Editor de Perfil</h1>
+                <p>Configure o seu <code>data.json</code> sem precisar editar código</p>
+            </header>
+
+            <div id="load-status" class="load-msg" style="display:none"></div>
+
+            <div class="tabs">
+                <button class="tab active" data-tab="perfil"><i class="fas fa-user"></i> Perfil</button>
+                <button class="tab" data-tab="redes"><i class="fas fa-share-nodes"></i> Redes</button>
+                <button class="tab" data-tab="pastas"><i class="fas fa-folder"></i> Pastas & Links</button>
+                <button class="tab" data-tab="json"><i class="fas fa-code"></i> JSON Final</button>
+            </div>
+
+            <!-- PERFIL -->
+            <section id="sec-perfil" class="section active">
+                <p class="section-title">Informações do Perfil</p>
+                <div class="card">
+                    <div class="field-group">
+                        <label for="p-foto">URL da Foto de Perfil</label>
+                        <div class="foto-row">
+                            <input id="p-foto" type="url" placeholder="https://...">
+                            <img id="foto-preview" class="profile-preview" src="" alt="Preview"
+                                onerror="this.style.display='none'">
+                        </div>
+                        <span class="hint">Cole a URL de qualquer imagem pública (linktr.ee, imgur, etc.)</span>
+                    </div>
+                    <div class="field-group">
+                        <label for="p-nome">Nome / Handle</label>
+                        <input id="p-nome" type="text" placeholder="Ex: N4K">
+                    </div>
+                    <div class="field-group">
+                        <label for="p-desc">Descrição / Bio</label>
+                        <textarea id="p-desc" placeholder="Conte um pouco sobre você..."></textarea>
+                    </div>
+                    <div class="field-group">
+                        <label for="p-bg">URL da Imagem de Fundo <span class="badge">opcional</span></label>
+                        <div class="foto-row">
+                            <input id="p-bg" type="url" placeholder="https://...">
+                            <img id="bg-preview" class="profile-preview" src="" alt="Preview"
+                                onerror="this.style.display='none'">
+                        </div>
+                        <span class="hint">A imagem de fundo é opcional, mas pode deixar seu perfil mais bonito! Use uma imagem clara e sem muitos detalhes para melhor resultado.</span>
+                    </div>
+                    <div class="field-group">
+                        <label for="p-theme">Tema Padrão</label>
+                        <select id="p-theme">
+                            <option value="dark">Escuro</option>
+                            <option value="light">Claro</option>
+                        </select>
+                    </div>
+                </div>
+
+
+            </section>
+
+            <!-- REDES -->
+            <section id="sec-redes" class="section">
+                <p class="section-title">Redes Sociais <span class="badge">ícones no topo do perfil</span></p>
+                <div id="redes-list"></div>
+                <button class="btn btn-add" id="btn-add-rede"><i class="fas fa-plus"></i> Adicionar rede</button>
+            </section>
+
+            <!-- PASTAS -->
+            <section id="sec-pastas" class="section">
+                <p class="section-title">Pastas</p>
+                <div id="pastas-list"></div>
+                <button class="btn btn-add" id="btn-add-pasta"><i class="fas fa-plus"></i> Adicionar pasta</button>
+
+                <p class="section-title" style="margin-top:2rem">
+                    Links Diretos <span class="badge">agrupados por tópico, fora de pastas</span>
+                </p>
+                <div id="direct-links-list"></div>
+                <button class="btn btn-add" id="btn-add-dl"><i class="fas fa-plus"></i> Adicionar link direto</button>
+            </section>
+
+            <!-- JSON -->
+            <section id="sec-json" class="section">
+                <p class="section-title">JSON Gerado</p>
+                <div class="json-actions">
+                    <button class="btn btn-primary" id="btn-gerar"><i class="fas fa-rotate"></i> Gerar JSON</button>
+                    <button class="btn" id="btn-copiar"><i class="fas fa-copy"></i> Copiar</button>
+                    <span id="copy-ok" class="copy-msg">Copiado!</span>
+                </div>
+                <textarea id="json-out" class="output-area" readonly></textarea>
+                <p class="hint" style="margin-top:8px">
+                    Salve como <code>data.json</code> dentro de <code>resources/</code>
+                </p>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="./resources/script/utils.js"></script>
+    <script src="./resources/script/editor.js"></script>
+</body>
+
+</html>

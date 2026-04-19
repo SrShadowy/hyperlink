@@ -1,0 +1,84 @@
+{
+  "profile": "https://ugc.production.linktr.ee/017d6b91-eec0-4ebd-8967-af5ab9057b7f_PERFIL-2.png?io=true&size=avatar-v3_0",
+  "name": "N4K",
+  "description": "Admin do Monster Hunter Brasil (maior Discord de MH da América Latina). Streamer na Twitch/YouTube e criador de guias completos das 14 armas desde 2021.",
+
+  "redes": [
+    { "nome": "Instagram", "url": "https://instagram.com", "icon": "fab fa-instagram" },
+    { "nome": "Twitter", "url": "https://twitter.com", "icon": "fab fa-twitter" },
+    { "nome": "Twitch", "url": "https://twitch.tv", "icon": "fab fa-twitch" },
+    { "nome": "YouTube", "url": "https://youtube.com", "icon": "fab fa-youtube" }
+  ],
+
+  "pastas": [
+    {
+      "nome": "Monster Hunter Wilds",
+      "topic": "Guia de Progressão",
+      "Icon": "MHWilds.png",
+      "links": [
+        { "nome": "Great Sword", "url": "https://docs.google.com/document/d/1e7Z7SZbc1QFCGQOES_wnOL5K1k8_7oyAN776YSXLZL4/edit?tab=t.0#heading=h.df72nqys7vor", "icon": "./resources/icons/MHIcons/40px-MHWI-Great_Sword_Icon_Rare_2.png.webp" },
+        { "nome": "Long Sword", "url": "https://docs.google.com/document/d/1IfcJdOknpuDxI_6GL7gqbePsgU0s0kPvDQD5vgb_56E/edit?tab=t.0#heading=h.df72nqys7vor", "icon": "./resources/icons/MHIcons/40px-MHWI-Long_Sword_Icon_Rare_2.png.webp"},
+        { "nome": "Dual Blades", "url": "https://docs.google.com/document/d/1ZZRF8XJASyNwRbHiCKMiXrIyIMS-yedOwL87pi1NK44/edit?tab=t.0#heading=h.df72nqys7vor", "icon": "./resources/icons/MHIcons/40px-MHWI-Dual_Blades_Icon_Rare_2.png.webp"},
+        { "nome": "Bow", "url": "https://example.com/bow", "icon": "./resources/icons/MHIcons/40px-MHWI-Bow_Icon_Rare_2.png.webp" },
+        { "nome": "Hammer", "url": "https://docs.google.com/document/d/19WNuDeDHTWFkhtaVlD32JgueJiugjNGW6LCT9Hi49Mg/edit?tab=t.0#heading=h.df72nqys7vor", "icon": "./resources/icons/MHIcons/40px-MHWI-Hammer_Icon_Rare_2.png.webp" },
+        { "nome": "Insect Glaive", "url": "https://example.com/insect-glaive", "icon": "./resources/icons/MHIcons/40px-MHWI-Insect_Glaive_Icon_Rare_2.png.webp" }
+      ]
+    },
+    {
+      "nome": "Monster Hunter World",
+      "topic": "Guia de Progressão",
+      "Icon": "MhWorld.png",
+      "links": [
+        { "nome": "Arma 1", "url": "https://example.com/mhw-arma1" },
+        { "nome": "Arma 2", "url": "https://example.com/mhw-arma2" }
+      ]
+    },
+    {
+      "nome": "Monster Hunter Rise",
+      "topic": "Guia de Progressão",
+      "Icon": "MHRise.png",
+      "links": [
+        { "nome": "Arma 1", "url": "https://example.com/mhr-arma1" },
+        { "nome": "Arma 2", "url": "https://example.com/mhr-arma2" }
+      ]
+    },
+    {
+      "nome": "Monster Hunter Stories 2",
+      "topic": "Playlist de gameplay",
+      "Icon": "MHHistory2.png",
+      "links": [
+        { "nome": "Gameplay 1", "url": "https://example.com/mhs2", "icon": "fab fa-youtube" }
+      ]
+    },
+    {
+      "nome": "Elden Ring",
+      "topic": "Playlist de gameplay",
+      "Icon": "EldenRing.png",
+      "links": [
+        { "nome": "Gameplay 1", "url": "https://example.com/elden-ring-gameplay1", "icon": "fab fa-youtube" },
+        { "nome": "Gameplay 2", "url": "https://example.com/elden-ring-gameplay2", "icon": "fab fa-youtube" }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "topic": "Guia de Progressão",
+      "nome": "Discord Oficial",
+      "url": "https://discord.gg/monsterhunter",
+      "icon": "fab fa-discord"
+    },
+    {
+      "topic": "Guia de Progressão",
+      "nome": "Guia rápido de armas",
+      "url": "https://example.com/guia-rapido"
+    },
+    {
+      "topic": "Playlist de gameplay",
+      "nome": "Live recente",
+      "url": "https://twitch.tv/n4k",
+      "icon": "fab fa-twitch"
+    }
+  ]
+
+
+}

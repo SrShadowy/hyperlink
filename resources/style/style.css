@@ -1,0 +1,243 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  transition: background 0.3s, color 0.3s;
+}
+
+body.dark-theme {
+  background: #0f0f0f;
+  color: white;
+}
+
+body.light-theme {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.container {
+    width: min(400px, calc(100vw - 40px));
+    max-width: 500px;
+    max-height: 90vh;
+    text-align: center;
+    margin: 0 auto;
+    padding: 28px 24px;
+    position: relative;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#profile {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+  align-self: center;
+}
+
+#description {
+  font-weight: normal;
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+
+
+.links a,
+.folders a {
+  display: inline-block;
+  margin: 5px;
+  padding: 10px;
+  background: #1e1e1e;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+
+body.light-theme .links a,
+body.light-theme .folders a {
+  background: #ddd;
+  color: #333;
+}
+
+.links a:hover,
+.folders a:hover {
+  background: #333;
+}
+
+body.light-theme .links a:hover,
+body.light-theme .folders a:hover {
+  background: #bbb;
+}
+
+.topic {
+  margin: 20px 0;
+}
+
+.topic h2 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.topic-links,
+.topic-folders .folder-links {
+  margin-top: 10px;
+
+}
+
+.topic-links .topic-link,
+.topic-folders .folder-link,
+.folder-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 5px 0;
+  padding: 10px;
+  background: #1e1e1e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.2s;
+  text-align: left;
+  font-weight: bolder;
+}
+
+.topic-links .topic-link {
+  justify-content: flex-start;
+  width: calc(100% - 20px);
+}
+
+.folder-toggle {
+  background: #1a1a1a;
+}
+
+.folder-toggle span:first-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.folder-links {
+
+    padding-left: 15px;
+    width: 88%;
+}
+
+.folder-link {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin: 5px 0;
+  padding: 10px;
+  background: #282828;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.topic-link {
+  background: #1e1e1e;
+}
+
+body.light-theme .folder-toggle,
+body.light-theme .topic-links .topic-link,
+body.light-theme .topic-folders .folder-link {
+  background: #ddd;
+  color: #333;
+}
+
+.folder-toggle:hover,
+.topic-link:hover,
+.folder-link:hover {
+  background: #333;
+}
+
+body.light-theme .folder-toggle:hover,
+body.light-theme .topic-links .topic-link:hover,
+body.light-theme .topic-folders .folder-link:hover {
+  background: #bbb;
+}
+
+.folder-icon,
+.link-icon,
+.link-icon-img {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.link-icon-img {
+  object-fit: contain;
+}
+
+
+/* SCROLL STYLES */
+.items-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.items-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.items-container::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.items-container::-webkit-scrollbar-thumb:hover {
+  background: #3a3a3a;
+}
+
+body.light-theme .items-container::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+}
+
+body.light-theme .items-container::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+
+.items-container {
+    overflow-y: auto;
+    max-height: 100%;
+    scrollbar-width: thin;
+    scrollbar-color: #5b5b5b transparent;
+    width: 100%;
+    padding-right: 13px;
+    padding-left: 6px;
+    scrollbar-gutter: stable;
+}
+
+body.light-theme .items-container {
+  scrollbar-color: #c0c0c0 transparent;
+}
