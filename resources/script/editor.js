@@ -4,22 +4,22 @@ const DATA_JSON_PATH = "./resources/data.json";
    ÍCONES DISPONÍVEIS DO FONT AWESOME
    ============================================================ */
 const FA_ICONS = [
-  { l: "Instagram",   v: "fab fa-instagram", i: "fab fa-instagram"  },
-  { l: "Twitter/X",   v: "fab fa-twitter",   i: "fab fa-twitter"    },
-  { l: "Twitch",      v: "fab fa-twitch",    i: "fab fa-twitch"     },
-  { l: "YouTube",     v: "fab fa-youtube",   i: "fab fa-youtube"    },
-  { l: "Discord",     v: "fab fa-discord",   i: "fab fa-discord"    },
-  { l: "TikTok",      v: "fab fa-tiktok",    i: "fab fa-tiktok"     },
-  { l: "GitHub",      v: "fab fa-github",    i: "fab fa-github"     },
-  { l: "LinkedIn",    v: "fab fa-linkedin",  i: "fab fa-linkedin"   },
-  { l: "Spotify",     v: "fab fa-spotify",   i: "fab fa-spotify"    },
-  { l: "Reddit",      v: "fab fa-reddit",    i: "fab fa-reddit"     },
-  { l: "Facebook",    v: "fab fa-facebook",  i: "fab fa-facebook"   },
-  { l: "Link",        v: "fas fa-link",      i: "fas fa-link"       },
-  { l: "Livro/Guia",  v: "fas fa-book",      i: "fas fa-book"       },
-  { l: "Vídeo",       v: "fas fa-video",     i: "fas fa-video"      },
-  { l: "Gamepad",     v: "fas fa-gamepad",   i: "fas fa-gamepad"    },
-  { l: "Star",        v: "fas fa-star",      i: "fas fa-star"       },
+  { l: "Instagram", v: "fab fa-instagram", i: "fab fa-instagram" },
+  { l: "Twitter/X", v: "fab fa-twitter", i: "fab fa-twitter" },
+  { l: "Twitch", v: "fab fa-twitch", i: "fab fa-twitch" },
+  { l: "YouTube", v: "fab fa-youtube", i: "fab fa-youtube" },
+  { l: "Discord", v: "fab fa-discord", i: "fab fa-discord" },
+  { l: "TikTok", v: "fab fa-tiktok", i: "fab fa-tiktok" },
+  { l: "GitHub", v: "fab fa-github", i: "fab fa-github" },
+  { l: "LinkedIn", v: "fab fa-linkedin", i: "fab fa-linkedin" },
+  { l: "Spotify", v: "fab fa-spotify", i: "fab fa-spotify" },
+  { l: "Reddit", v: "fab fa-reddit", i: "fab fa-reddit" },
+  { l: "Facebook", v: "fab fa-facebook", i: "fab fa-facebook" },
+  { l: "Link", v: "fas fa-link", i: "fas fa-link" },
+  { l: "Livro/Guia", v: "fas fa-book", i: "fas fa-book" },
+  { l: "Vídeo", v: "fas fa-video", i: "fas fa-video" },
+  { l: "Gamepad", v: "fas fa-gamepad", i: "fas fa-gamepad" },
+  { l: "Star", v: "fas fa-star", i: "fas fa-star" },
 ];
 
 const debouncedUpdatePreview = debounce(atualizarPreview, 200);
@@ -40,7 +40,7 @@ let previewTheme = "dark";
 document.getElementById("preview-theme-btn").addEventListener("click", () => {
   const root = document.getElementById("preview-root");
   previewTheme = previewTheme === "dark" ? "light" : "dark";
-  root.classList.toggle("dark-theme",  previewTheme === "dark");
+  root.classList.toggle("dark-theme", previewTheme === "dark");
   root.classList.toggle("light-theme", previewTheme === "light");
   document.getElementById("preview-theme-btn").innerHTML =
     previewTheme === "dark" ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
@@ -53,18 +53,18 @@ function atualizarPreview() {
   const foto = document.getElementById("p-foto").value.trim();
   const pvFoto = document.getElementById("pv-foto");
   if (foto) { pvFoto.src = foto; pvFoto.style.display = "block"; }
-  else       { pvFoto.style.display = "none"; }
+  else { pvFoto.style.display = "none"; }
 
   document.getElementById("pv-nome").textContent = document.getElementById("p-nome").value.trim();
   document.getElementById("pv-desc").textContent = document.getElementById("p-desc").value.trim();
 
-  
+
   const redesEl = document.getElementById("pv-redes");
   redesEl.innerHTML = "";
   document.querySelectorAll("[id^='rn-']").forEach(el => {
-    const id  = el.id.replace("rn-", "");
+    const id = el.id.replace("rn-", "");
     const url = document.getElementById("ru-" + id)?.value.trim() || "#";
-    const ic  = document.getElementById("ri-" + id)?.value.trim() || "";
+    const ic = document.getElementById("ri-" + id)?.value.trim() || "";
     if (!ic) return;
     const a = document.createElement("a");
     a.href = url; a.target = "_blank";
@@ -79,21 +79,21 @@ function atualizarPreview() {
 
   const topicsOrder = [];
   const topicPastas = {};
-  const topicLinks  = {};
+  const topicLinks = {};
 
   document.querySelectorAll("[id^='pasta-']").forEach(el => {
-    const id    = el.id.replace("pasta-", "");
+    const id = el.id.replace("pasta-", "");
     const topic = document.getElementById("pt-" + id)?.value.trim() || "";
-    const nome  = document.getElementById("pn-" + id)?.value.trim() || "";
-    const icon  = document.getElementById("pi-" + id)?.value.trim() || "";
+    const nome = document.getElementById("pn-" + id)?.value.trim() || "";
+    const icon = document.getElementById("pi-" + id)?.value.trim() || "";
     if (!nome) return;
 
     const links = [];
     el.querySelectorAll(`[id^='sl-${id}-'][id$='-n']`).forEach(lel => {
-      const lid  = lel.id.replace("-n", "");
-      const ln   = document.getElementById(lid + "-n")?.value.trim() || "";
-      const lu   = document.getElementById(lid + "-u")?.value.trim() || "#";
-      const li   = document.getElementById(lid + "-i")?.value.trim() || "";
+      const lid = lel.id.replace("-n", "");
+      const ln = document.getElementById(lid + "-n")?.value.trim() || "";
+      const lu = document.getElementById(lid + "-u")?.value.trim() || "#";
+      const li = document.getElementById(lid + "-i")?.value.trim() || "";
       if (ln) links.push({ nome: ln, url: lu, icon: li });
     });
 
@@ -102,11 +102,11 @@ function atualizarPreview() {
   });
 
   document.querySelectorAll("[id^='dl-']").forEach(el => {
-    const id    = el.id.replace("dl-", "");
+    const id = el.id.replace("dl-", "");
     const topic = document.getElementById("dlt-" + id)?.value.trim() || "";
-    const nome  = document.getElementById("dln-" + id)?.value.trim() || "";
-    const url   = document.getElementById("dlu-" + id)?.value.trim() || "#";
-    const ic    = document.getElementById("dli-" + id)?.value.trim() || "";
+    const nome = document.getElementById("dln-" + id)?.value.trim() || "";
+    const url = document.getElementById("dlu-" + id)?.value.trim() || "#";
+    const ic = document.getElementById("dli-" + id)?.value.trim() || "";
     if (!nome) return;
     if (!topicLinks[topic]) { topicLinks[topic] = []; if (!topicsOrder.includes(topic)) topicsOrder.push(topic); }
     topicLinks[topic].push({ nome, url, icon: ic });
@@ -174,7 +174,7 @@ document.body.addEventListener("change", debouncedUpdatePreview);
 document.getElementById("p-foto").addEventListener("input", function () {
   const img = document.getElementById("foto-preview");
   if (this.value) { img.src = this.value; img.style.display = "block"; }
-  else              { img.style.display = "none"; }
+  else { img.style.display = "none"; }
 });
 
 //#endregion
@@ -192,11 +192,11 @@ function iconPickerHTML(fieldId, currentValue = "") {
       <p class="icon-section-label">Font Awesome — clique para selecionar:</p>
       <div class="icon-grid">
         ${FA_ICONS.map(i =>
-          `<span class="icon-opt${currentValue === i.v ? " sel" : ""}"
+    `<span class="icon-opt${currentValue === i.v ? " sel" : ""}"
                data-target="${fieldId}" data-value="${i.v}">
              <i class="${i.i}"></i>${i.l}
            </span>`
-        ).join("")}
+  ).join("")}
       </div>
     </div>`;
 }
@@ -236,7 +236,7 @@ document.body.addEventListener("click", e => {
 document.getElementById("btn-add-rede").addEventListener("click", () => addRede());
 
 function addRede(data = {}) {
-  const id  = generateId();
+  const id = generateId();
   const div = document.createElement("div");
   div.className = "card";
   div.id = `rede-${id}`;
@@ -336,7 +336,7 @@ document.getElementById("btn-add-dl").addEventListener("click", () => addDirectL
 
 
 function addDirectLink(data = {}) {
-  const id  = generateId();
+  const id = generateId();
   const div = document.createElement("div");
   div.className = "card";
   div.id = `dl-${id}`;
@@ -373,8 +373,7 @@ function addDirectLink(data = {}) {
 
 
 
-function BaixarPacote()
-{
+function BaixarPacote() {
   const url = "https://github.com/user-attachments/files/26864499/Release.webonce.zip";
   const a = document.createElement("a");
   a.href = url;
@@ -396,39 +395,39 @@ document.getElementById("btn-gerar").addEventListener("click", gerarJSON);
 function gerarJSON() {
   const get = id => { const el = document.getElementById(id); return el ? el.value.trim() : ""; };
 
-  const profile     = get("p-foto");
-  const name        = get("p-nome");
+  const profile = get("p-foto");
+  const name = get("p-nome");
   const description = get("p-desc");
-  const background  = get("p-bg");
+  const background = get("p-bg");
 
-  const theme = get("p-theme").toLowerCase();   
+  const theme = get("p-theme").toLowerCase();
 
   const redes = [];
   document.querySelectorAll("[id^='rn-']").forEach(el => {
-    const id  = el.id.replace("rn-", "");
-    const obj = { nome: get("rn-"+id), url: get("ru-"+id), icon: get("ri-"+id) };
+    const id = el.id.replace("rn-", "");
+    const obj = { nome: get("rn-" + id), url: get("ru-" + id), icon: get("ri-" + id) };
     if (obj.nome || obj.url) redes.push(obj);
   });
 
   const pastas = [];
   document.querySelectorAll("[id^='pasta-']").forEach(el => {
-    const id    = el.id.replace("pasta-", "");
+    const id = el.id.replace("pasta-", "");
     const links = [];
     el.querySelectorAll(`[id^='sl-${id}-'][id$='-n']`).forEach(lel => {
-      const lid  = lel.id.replace("-n","");
-      const link = { nome: get(lid+"-n"), url: get(lid+"-u") };
-      const ic   = get(lid+"-i"); if (ic) link.icon = ic;
+      const lid = lel.id.replace("-n", "");
+      const link = { nome: get(lid + "-n"), url: get(lid + "-u") };
+      const ic = get(lid + "-i"); if (ic) link.icon = ic;
       if (link.nome || link.url) links.push(link);
     });
-    const pasta = { nome: get("pn-"+id), topic: get("pt-"+id), Icon: get("pi-"+id), links };
+    const pasta = { nome: get("pn-" + id), topic: get("pt-" + id), Icon: get("pi-" + id), links };
     if (pasta.nome) pastas.push(pasta);
   });
 
   const links = [];
   document.querySelectorAll("[id^='dl-']").forEach(el => {
-    const id   = el.id.replace("dl-","");
-    const link = { topic: get("dlt-"+id), nome: get("dln-"+id), url: get("dlu-"+id) };
-    const ic   = get("dli-"+id); if (ic) link.icon = ic;
+    const id = el.id.replace("dl-", "");
+    const link = { topic: get("dlt-" + id), nome: get("dln-" + id), url: get("dlu-" + id) };
+    const ic = get("dli-" + id); if (ic) link.icon = ic;
     if (link.nome || link.url) links.push(link);
   });
 
@@ -476,11 +475,11 @@ function preencherEditor(data) {
   const foto = data.profile || "";
   document.getElementById("p-foto").value = foto;
   if (foto) { const img = document.getElementById("foto-preview"); img.src = foto; img.style.display = "block"; }
-  document.getElementById("p-nome").value = data.name        || "";
+  document.getElementById("p-nome").value = data.name || "";
   document.getElementById("p-desc").value = data.description || "";
-  (data.redes  || []).forEach(r => addRede(r));
+  (data.redes || []).forEach(r => addRede(r));
   (data.pastas || []).forEach(p => addPasta(p));
-  (data.links  || []).forEach(l => addDirectLink(l));
+  (data.links || []).forEach(l => addDirectLink(l));
 }
 
 /* ============================================================
@@ -493,6 +492,11 @@ function limparEditor() {
   const editor = document.getElementById("json-out");
   if (editor) editor.value = "";
   window.editorData = {};
+
+  document.getElementById("p-foto").value = "";
+  document.getElementById("p-nome").value = "";
+  document.getElementById("p-desc").value = "";
+
 }
 
 function carregarDoUsuario(file) {
@@ -500,7 +504,7 @@ function carregarDoUsuario(file) {
   reader.onload = (event) => {
     try {
       const data = JSON.parse(event.target.result);
-      preencherEditor(data); 
+      preencherEditor(data);
       if (status) {
         status.textContent = "✓ JSON do usuário carregado com sucesso";
         status.className = "load-msg load-ok";
@@ -522,5 +526,12 @@ document.getElementById("jsonFileInput").addEventListener("change", (event) => {
   if (file) {
     limparEditor();
     carregarDoUsuario(file);
+  }
+});
+
+document.getElementById("btn-clear").addEventListener("click", () => {
+  if (confirm("Tem certeza que deseja limpar o editor? Esta ação não pode ser desfeita.")) {
+    limparEditor();
+    atualizarPreview();
   }
 });
