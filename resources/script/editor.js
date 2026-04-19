@@ -1,4 +1,5 @@
 const DATA_JSON_PATH = "./resources/data.json";
+const LocalDataStore = "hyperlink-editor";
 
 /* ============================================================
    ÍCONES DISPONÍVEIS DO FONT AWESOME
@@ -6,6 +7,7 @@ const DATA_JSON_PATH = "./resources/data.json";
 const FA_ICONS = [
   { l: "Instagram", v: "fab fa-instagram", i: "fab fa-instagram" },
   { l: "Twitter/X", v: "fab fa-twitter", i: "fab fa-twitter" },
+  { l: "Twitter/X", v: "fab fa-x-twitter", i: "fab fa-x-twitter" },
   { l: "Twitch", v: "fab fa-twitch", i: "fab fa-twitch" },
   { l: "YouTube", v: "fab fa-youtube", i: "fab fa-youtube" },
   { l: "Discord", v: "fab fa-discord", i: "fab fa-discord" },
@@ -24,13 +26,7 @@ const FA_ICONS = [
 
 const debouncedUpdatePreview = debounce(atualizarPreview, 200);
 
-document.body.addEventListener("input", e => {
-  if (e.target.id.startsWith("pn-")) {
-    const folder = e.target.closest(".folder-card");
-    const title = folder.querySelector(".folder-title");
-    if (title) title.textContent = e.target.value || "Nova Pasta";
-  }
-});
+
 
 document.querySelectorAll(".tab").forEach(btn => {
   btn.addEventListener("click", () => {
@@ -58,6 +54,7 @@ document.getElementById("preview-theme-btn").addEventListener("click", () => {
 
 function atualizarPreview() {
 
+  saveToLocal();
   const foto = document.getElementById("p-foto").value.trim();
   const pvFoto = document.getElementById("pv-foto");
   if (foto) { pvFoto.src = foto; pvFoto.style.display = "block"; }
@@ -178,6 +175,13 @@ function iconHTML(icon, size = 14) {
 document.body.addEventListener("input", debouncedUpdatePreview);
 document.body.addEventListener("change", debouncedUpdatePreview);
 
+document.body.addEventListener("input", e => {
+  if (e.target.id.startsWith("pn-")) {
+    const folder = e.target.closest(".folder-card");
+    const title = folder.querySelector(".folder-title");
+    if (title) title.textContent = e.target.value || "Nova Pasta";
+  }
+});
 
 document.getElementById("p-foto").addEventListener("input", function () {
   const img = document.getElementById("foto-preview");
@@ -215,9 +219,7 @@ function iconPickerHTML(fieldId, currentValue = "") {
 document.body.addEventListener("click", e => {
   const action = e.target.closest("[data-action]")?.dataset.action;
 
-
-  if (action === "collapse") {
-   
+  if (action === "collapse") {   
     const folder = e.target.closest(".folder-card");
     if (!folder) return;
 
@@ -632,3 +634,29 @@ document.getElementById("btn-clear").addEventListener("click", () => {
     atualizarPreview();
   }
 });
+
+
+/* ============================================================
+  Local Storage — Salva o estado atual do editor no localStorage
+============================================================ */
+
+
+const saved = localStorage.getItem(LocalDataStore);
+
+if (saved) {
+  try {
+    limparEditor();
+    const data = JSON.parse(saved);
+    preencherEditor(data);
+    atualizarPreview();
+    console.log("Restaurado do localStorage");
+  } catch (e) {
+    console.warn("Erro ao restaurar cache");
+  }
+}
+
+
+function saveToLocal() {
+  const data = getEditorData();
+  localStorage.setItem(LocalDataStore, JSON.stringify(data));
+}
