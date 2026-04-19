@@ -220,12 +220,12 @@ document.body.addEventListener("click", e => {
     return;
   }
 
-  if (e.target.closest(".folder-icon-grid [data-icon-target]")) {
-    const opt = e.target.closest("[data-icon-target]");
-    const input = document.getElementById(opt.dataset.iconTarget);
+  if (e.target.closest(".icon-grid [data-target]")) {
+    const opt = e.target.closest("[data-target]");
+    const input = document.getElementById(opt.dataset.target);
     if (input) {
-      input.value = opt.dataset.iconValue;
-      opt.closest(".folder-icon-grid").querySelectorAll(".icon-opt").forEach(o => o.classList.remove("sel"));
+      input.value = opt.dataset.value;
+      opt.closest(".icon-grid").querySelectorAll(".icon-opt").forEach(o => o.classList.remove("sel"));
       opt.classList.add("sel");
       debouncedUpdatePreview();
     }
