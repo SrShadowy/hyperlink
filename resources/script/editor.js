@@ -223,8 +223,6 @@ document.body.addEventListener("click", e => {
 
     folder.classList.toggle("collapsed");
 
-    console.log("collapse / decollapse pasta");
-
     const icon = folder.querySelector('[data-action="collapse"] i');
     if (icon) {
       icon.classList.toggle("fa-caret-up");
@@ -236,7 +234,6 @@ document.body.addEventListener("click", e => {
 
   if (action === "move-up" || action === "move-down") {
 
-    console.log("Mover:", action);
     const item = e.target.closest(".card, .folder-card, .link-row");
 
     if (!item) return;
@@ -315,7 +312,6 @@ document.getElementById("btn-add-dl").addEventListener("click", () => addDirectL
 
 function moveElement(el, direction) {
   const parent = el.parentElement;
-  console.log(parent, el, direction);
 
   if (direction === "up" && el.previousElementSibling) {
     parent.insertBefore(el, el.previousElementSibling);
