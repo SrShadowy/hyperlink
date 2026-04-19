@@ -371,6 +371,26 @@ function addDirectLink(data = {}) {
 
 // #region JSON
 
+
+
+function BaixarPacote()
+{
+  const url = "https://github.com/user-attachments/files/26864499/Release.webonce.zip";
+  const a = document.createElement("a");
+  a.href = url;
+
+  const filename = url.split("/").pop();
+  a.download = filename;
+
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+
+}
+
+
+document.getElementById("btn-download").addEventListener("click", BaixarPacote);
+
 document.getElementById("btn-gerar").addEventListener("click", gerarJSON);
 
 function gerarJSON() {
@@ -462,3 +482,45 @@ function preencherEditor(data) {
   (data.pastas || []).forEach(p => addPasta(p));
   (data.links  || []).forEach(l => addDirectLink(l));
 }
+
+/* ============================================================
+  Carregar o json do input e preencher o editor
+============================================================ */
+
+function limparEditor() {
+  const listItems = document.querySelectorAll("#redes-list .card, #pastas-list .folder-card, #direct-links-list .card");
+  listItems.forEach(item => item.remove());
+  const editor = document.getElementById("json-out");
+  if (editor) editor.value = "";
+  window.editorData = {};
+}
+
+function carregarDoUsuario(file) {
+  const reader = new FileReader();
+  reader.onload = (event) => {
+    try {
+      const data = JSON.parse(event.target.result);
+      preencherEditor(data); 
+      if (status) {
+        status.textContent = "✓ JSON do usuário carregado com sucesso";
+        status.className = "load-msg load-ok";
+      }
+      atualizarPreview();
+    } catch (err) {
+      console.error("Erro ao ler JSON:", err);
+      if (status) {
+        status.textContent = "⚠ Arquivo inválido — não foi possível carregar";
+        status.className = "load-msg load-err";
+      }
+    }
+  };
+  reader.readAsText(file);
+}
+
+document.getElementById("jsonFileInput").addEventListener("change", (event) => {
+  const file = event.target.files[0];
+  if (file) {
+    limparEditor();
+    carregarDoUsuario(file);
+  }
+});

@@ -75,7 +75,8 @@
                             <img id="bg-preview" class="profile-preview" src="" alt="Preview"
                                 onerror="this.style.display='none'">
                         </div>
-                        <span class="hint">A imagem de fundo é opcional, mas pode deixar seu perfil mais bonito! Use uma imagem clara e sem muitos detalhes para melhor resultado.</span>
+                        <span class="hint">A imagem de fundo é opcional, mas pode deixar seu perfil mais bonito! Use uma
+                            imagem clara e sem muitos detalhes para melhor resultado.</span>
                     </div>
                     <div class="field-group">
                         <label for="p-theme">Tema Padrão</label>
@@ -115,15 +116,35 @@
                 <div class="json-actions">
                     <button class="btn btn-primary" id="btn-gerar"><i class="fas fa-rotate"></i> Gerar JSON</button>
                     <button class="btn" id="btn-copiar"><i class="fas fa-copy"></i> Copiar</button>
+
+                    <label for="jsonFileInput" class="btn">
+                        <i class="fas fa-file-import"></i> Carregar JSON
+                    </label>
+                    <input type="file" id="jsonFileInput" style="visibility: hidden;" accept=".json" />
+
                     <span id="copy-ok" class="copy-msg">Copiado!</span>
+
+
+
                 </div>
                 <textarea id="json-out" class="output-area" readonly></textarea>
                 <p class="hint" style="margin-top:8px">
                     Salve como <code>data.json</code> dentro de <code>resources/</code>
                 </p>
+                <br>
+
+                <button class="btn" id="btn-download"><i class="fas fa-copy"></i>Download Pacote</button>
+
+                <p class="hint" style="margin-top:8px">
+                    Baixe o pacote e coloque no seu github pages, não esqueça de colocar o <code>data.json</code> dentro
+                    de <code>resources/</code>
+                </p>
+
             </section>
 
         </main>
+
+
     </div>
 
     <script src="./resources/script/utils.js"></script>
