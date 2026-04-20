@@ -46,6 +46,44 @@ document.querySelectorAll(".tab").forEach(btn => {
 });
 
 /* ============================================================
+   PANEL RESIZER — arrastar para ajustar largura
+   ============================================================ */
+let isResizing = false;
+let startX, startWidthPreview, startWidthEditor;
+
+const resizer = document.getElementById('panel-resizer');
+const previewPanel = document.querySelector('.preview-panel');
+const editorPanel = document.querySelector('.editor-panel');
+
+resizer.addEventListener('mousedown', (e) => {
+  isResizing = true;
+  startX = e.clientX;
+  startWidthPreview = previewPanel.offsetWidth;
+  startWidthEditor = editorPanel.offsetWidth;
+  document.body.style.cursor = 'col-resize';
+  document.body.style.userSelect = 'none';
+});
+
+document.addEventListener('mousemove', (e) => {
+  if (!isResizing) return;
+
+  const deltaX = e.clientX - startX;
+  const newPreviewWidth = Math.max(320, Math.min(startWidthPreview + deltaX, window.innerWidth - 400));
+  const newEditorWidth = Math.max(400, window.innerWidth - newPreviewWidth - resizer.offsetWidth);
+
+  previewPanel.style.width = newPreviewWidth + 'px';
+  editorPanel.style.width = newEditorWidth + 'px';
+});
+
+document.addEventListener('mouseup', () => {
+  if (isResizing) {
+    isResizing = false;
+    document.body.style.cursor = '';
+    document.body.style.userSelect = '';
+  }
+});
+
+/* ============================================================
    PREVIEW — tema toggle
    ============================================================ */
 let previewTheme = "dark";
