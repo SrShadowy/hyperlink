@@ -1124,13 +1124,12 @@ function setStatus(msg, cls) {
 window.addEventListener("load", () => {
   const hadLocal = loadFromLocal();
   if (hadLocal) {
-    setStatus("✓ Rascunho restaurado do navegador","load-ok"); atualizarPreview();
+    setStatus("✓ Rascunho restaurado do navegador","load-ok");
   } else {
-    fetch(DATA_JSON_PATH)
-      .then(res => { if(!res.ok) throw new Error(); return res.json(); })
-      .then(data => { preencherEditor(data); saveToLocal(); setStatus("✓ data.json carregado","load-ok"); atualizarPreview(); })
-      .catch(() => { setStatus("⚠ Nenhum rascunho ou data.json encontrado","load-err"); atualizarPreview(); });
+    limparEditor();
+    setStatus("✓ Sem rascunho local — edite diretamente ou carregue um JSON","load-ok");
   }
+  atualizarPreview();
 });
 
 /* ============================================================

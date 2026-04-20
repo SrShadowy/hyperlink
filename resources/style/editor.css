@@ -243,12 +243,12 @@ code {
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   transition: all 0.2s ease;
 }
-.dark-theme  .pv-folder-toggle { background: rgba(93, 202, 165, 0.1); color: #5dcaa5; border: 1px solid rgba(93, 202, 165, 0.2); }
-.light-theme .pv-folder-toggle { background: rgba(0, 0, 0, 0.08); color: #222; border: 1px solid rgba(0, 0, 0, 0.1); }
-.pv-folder-toggle:hover { background: rgba(93, 202, 165, 0.15); }
+.dark-theme  .pv-folder-toggle { background: #111111e5; color: #fff; }
+.light-theme .pv-folder-toggle { background: rgba(22, 22, 22, 0.06); color: #222; }
+.pv-folder-toggle:hover { background: #1e1e1e; }
 
 .pv-folder-toggle span { display: flex; align-items: center; gap: 7px; }
 .pv-folder-toggle img  { width: 18px; height: 18px; object-fit: contain; }

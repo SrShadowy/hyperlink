@@ -1,0 +1,43 @@
+{
+  "profile": "https://srshadowy.github.io/img/per.gif",
+  "name": "SrShadowy",
+  "description": "Um programador autodidata desde os 10 anos. Apaixonado por C++, reverse engineering e game dev. Curioso, astuto e sempre aprendendo.",
+  "background": "",
+  "theme": "dark",
+  "redes": [
+    {
+      "nome": "GitHub",
+      "url": "https://github.com/srshadowy",
+      "icon": "fab fa-github"
+    },
+    {
+      "nome": "X",
+      "url": "https://x.com/SrShadowy",
+      "icon": "fab fa-x-twitter"
+    }
+  ],
+  "pastas": [
+    {
+      "id": "pasta-antiga-1",
+      "nome": "Ferramentas",
+      "topic": "Desenvolvimento",
+      "Icon": "fas fa-tools",
+      "links": [
+        {
+          "nome": "VS Code",
+          "url": "https://code.visualstudio.com/",
+          "icon": "fas fa-code"
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "id": "link-antigo-1",
+      "nome": "Meu Website",
+      "topic": "Pessoal",
+      "url": "https://srshadowy.github.io/",
+      "icon": "fas fa-globe"
+    }
+  ]
+}
