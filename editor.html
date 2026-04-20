@@ -32,8 +32,15 @@
         <main class="editor-panel">
 
             <header class="editor-header">
-                <h1>Editor de Perfil</h1>
-                <p>Configure o seu <code>data.json</code> sem precisar editar código</p>
+                <div class="editor-header-row">
+                    <div>
+                        <h1>Editor de Perfil</h1>
+                        <p>Configure o seu <code>data.json</code> sem precisar editar código</p>
+                    </div>
+                    <div id="save-indicator" class="save-indicator">
+                        <i class="fas fa-cloud"></i> Salvo
+                    </div>
+                </div>
             </header>
 
             <div id="load-status" class="load-msg" style="display:none"></div>
@@ -95,9 +102,14 @@
                 <button class="btn btn-add" id="btn-add-rede"><i class="fas fa-plus"></i> Adicionar rede</button>
             </section>
 
+            
             <!-- PASTAS -->
             <section id="sec-pastas" class="section">
                 <p class="section-title">Pastas</p>
+
+                <div id="items-list"></div>
+
+
                 <div id="pastas-list"></div>
                 <button class="btn btn-add" id="btn-add-pasta"><i class="fas fa-plus"></i> Adicionar pasta</button>
 
@@ -112,31 +124,31 @@
             <section id="sec-json" class="section">
                 <p class="section-title">JSON Gerado</p>
                 <div class="json-actions">
-                    <button class="btn btn-primary" id="btn-gerar"><i class="fas fa-rotate"></i> Gerar JSON</button>
+                    <button class="btn btn-primary" id="btn-gerar"><i class="fas fa-code"></i> Gerar JSON</button>
                     <button class="btn" id="btn-copiar"><i class="fas fa-copy"></i> Copiar</button>
+                    <button class="btn" id="btn-download-json"><i class="fas fa-download"></i> Download data.json</button>
 
                     <label for="jsonFileInput" class="btn">
                         <i class="fas fa-file-import"></i> Carregar JSON
                     </label>
-                    <input type="file" id="jsonFileInput" style="visibility: hidden;" accept=".json" />
+                    <input type="file" id="jsonFileInput" style="visibility: hidden; display: none;" accept=".json" />
 
-                    <span id="copy-ok" class="copy-msg">Copiado!</span>
+                    <button class="btn" id="btn-reset-json" title="Descarta o rascunho e recarrega o data.json do projeto">
+                        <i class="fas fa-rotate-left"></i> Resetar
+                    </button>
 
-
-
+                    <span id="copy-ok" class="copy-msg"><i class="fas fa-check"></i> Copiado!</span>
                 </div>
                 <textarea id="json-out" class="output-area" readonly></textarea>
-                <p class="hint" style="margin-top:8px">
-                    Salve como <code>data.json</code> dentro de <code>resources/</code>
+                <p class="hint" style="margin-top:12px">
+                    Coloque o <code>data.json</code> dentro de <code>resources/</code> no seu GitHub Pages
                 </p>
                 <br>
 
-                <button class="btn" id="btn-download"><i class="fas fa-copy"></i>Download Pacote</button>
-                <button class="btn" id="btn-clear"><i class="fas fa-copy"></i>Limpar Editor</button>
+                <button class="btn btn-primary" id="btn-download"><i class="fas fa-box"></i> Download Pacote Completo</button>
 
-                <p class="hint" style="margin-top:8px">
-                    Baixe o pacote e coloque no seu github pages, não esqueça de colocar o <code>data.json</code> dentro
-                    de <code>resources/</code>
+                <p class="hint" style="margin-top:12px">
+                    Baixe o pacote completo com todos os arquivos necessários prontos para publicar
                 </p>
 
             </section>
