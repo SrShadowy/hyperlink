@@ -193,22 +193,34 @@ document.body.addEventListener("input", e => {
 });
 
 /* ============================================================
-   HELPER — Icon Picker HTML  (com botão de arquivo)
+   HELPER — Icon Picker HTML  (com busca e previsualizador)
    ============================================================ */
 function iconPickerHTML(fieldId, currentValue = "") {
   const esc = v => (v||"").replace(/"/g,"&quot;");
   const fileId  = fieldId + "-file";
   const thumbId = fieldId + "-thumb";
+  const previewId = fieldId + "-preview";
+  const faClass = isFaIcon(currentValue) ? currentValue : "";
+  
   return `
     <div class="icon-picker-wrap" data-picker-id="${fieldId}">
       <div class="icon-input-row">
         <input id="${fieldId}" type="text" value="${esc(currentValue)}"
-               placeholder="fab fa-discord  ou  nome-do-arquivo.png">
+               placeholder="fab fa-discord, fas fa-heart, etc.">
+        <span class="icon-preview-box" id="${previewId}">
+          ${faClass ? `<i class="${faClass}" title="Prévia do ícone"></i>` : '<span style="color:#666">—</span>'}
+        </span>
         <label class="btn btn-file" for="${fileId}" title="Escolher imagem do computador">
           <i class="fas fa-ellipsis"></i>
         </label>
         <input type="file" id="${fileId}" accept="image/*" style="display:none"
                data-target="${fieldId}" data-thumb="${thumbId}">
+      </div>
+      <div class="icon-help-text">
+        <a href="https://fontawesome.com/search" target="_blank" rel="noopener">
+          <i class="fas fa-external-link-alt"></i> Procurar ícones no Font Awesome
+        </a>
+        <span class="hint">Cole a classe completa aqui (ex: fab fa-instagram)</span>
       </div>
       <div id="${thumbId}" class="icon-thumb-wrap" style="display:none">
         <img class="icon-thumb-img" src="" alt="">
@@ -216,15 +228,6 @@ function iconPickerHTML(fieldId, currentValue = "") {
           <i class="fas fa-triangle-exclamation"></i>
           Copie este arquivo para <code>resources/icons/</code>
         </div>
-      </div>
-      <p class="icon-section-label">Font Awesome:</p>
-      <div class="icon-grid">
-        ${FA_ICONS.map(i =>
-          `<span class="icon-opt${currentValue===i.v?" sel":""}"
-               data-target="${fieldId}" data-value="${i.v}">
-             <i class="${i.i}"></i>${i.l}
-           </span>`
-        ).join("")}
       </div>
     </div>`;
 }
@@ -265,6 +268,24 @@ function styleBlockHTML(prefix, data = {}) {
 
 /* Mostra/esconde cor do ícone conforme tipo de ícone */
 document.body.addEventListener("input", e => {
+  // Atualiza preview de ícone FA ao digitar
+  if (e.target.closest(".icon-picker-wrap input[type='text']")) {
+    const input = e.target.closest(".icon-picker-wrap input[type='text']");
+    const pickerId = input.closest(".icon-picker-wrap")?.dataset.pickerId;
+    if (!pickerId) return;
+    
+    const previewEl = document.getElementById(pickerId + "-preview");
+    const value = input.value.trim();
+    
+    if (previewEl) {
+      if (isFaIcon(value)) {
+        previewEl.innerHTML = `<i class="${value}" title="Prévia do ícone"></i>`;
+      } else {
+        previewEl.innerHTML = '<span style="color:#666">—</span>';
+      }
+    }
+  }
+
   if (!e.target.classList.contains("icon-picker-wrap input") && e.target.closest(".icon-picker-wrap")) {
     const wrap   = e.target.closest(".icon-picker-wrap");
     const prefix = wrap?.dataset.pickerId?.replace(/-i$/, "");
@@ -290,7 +311,6 @@ document.body.addEventListener("change", e => {
   if (!textInput) return;
 
   textInput.value = file.name;
-  textInput.closest(".icon-picker-wrap")?.querySelectorAll(".icon-opt").forEach(o => o.classList.remove("sel"));
 
   // Esconde cor do ícone (é imagem, não FA)
   const prefix = targetId.replace(/-i$/, "");
@@ -345,23 +365,6 @@ document.body.addEventListener("click", e => {
     addSubLink(pastaId);
     debouncedSave(); debouncedUpdatePreview();
     return;
-  }
-
-  // Icon picker — clique num ícone FA rápido
-  const opt = e.target.closest(".icon-grid [data-target]");
-  if (opt) {
-    const input = document.getElementById(opt.dataset.target);
-    if (!input) return;
-    input.value = opt.dataset.value;
-    opt.closest(".icon-grid").querySelectorAll(".icon-opt").forEach(o => o.classList.remove("sel"));
-    opt.classList.add("sel");
-
-    // Mostra/esconde extras de cor do ícone
-    const prefix = opt.dataset.target.replace(/-i$/, "");
-    const extras = document.getElementById(prefix + "-extras");
-    if (extras) extras.style.display = isFaIcon(opt.dataset.value) ? "block" : "none";
-
-    debouncedSave(); debouncedUpdatePreview();
   }
 });
 
