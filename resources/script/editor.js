@@ -6,25 +6,74 @@ const DATA_JSON_PATH   = "./resources/data.json";
 const LOCAL_STORAGE_KEY = "hyperlink-editor";
 
 /* ============================================================
-   ÍCONES FA DISPONÍVEIS
+   ÍCONES MAIS COMUNS
    ============================================================ */
 const FA_ICONS = [
-  { l:"Instagram",  v:"fab fa-instagram",  i:"fab fa-instagram"  },
-  { l:"Twitter/X",  v:"fab fa-x-twitter",  i:"fab fa-x-twitter"  },
-  { l:"Twitch",     v:"fab fa-twitch",      i:"fab fa-twitch"     },
-  { l:"YouTube",    v:"fab fa-youtube",     i:"fab fa-youtube"    },
-  { l:"Discord",    v:"fab fa-discord",     i:"fab fa-discord"    },
-  { l:"TikTok",     v:"fab fa-tiktok",      i:"fab fa-tiktok"     },
-  { l:"GitHub",     v:"fab fa-github",      i:"fab fa-github"     },
-  { l:"LinkedIn",   v:"fab fa-linkedin",    i:"fab fa-linkedin"   },
-  { l:"Spotify",    v:"fab fa-spotify",     i:"fab fa-spotify"    },
-  { l:"Reddit",     v:"fab fa-reddit",      i:"fab fa-reddit"     },
-  { l:"Facebook",   v:"fab fa-facebook",    i:"fab fa-facebook"   },
-  { l:"Link",       v:"fas fa-link",        i:"fas fa-link"       },
-  { l:"Livro/Guia", v:"fas fa-book",        i:"fas fa-book"       },
-  { l:"Vídeo",      v:"fas fa-video",       i:"fas fa-video"      },
-  { l:"Gamepad",    v:"fas fa-gamepad",     i:"fas fa-gamepad"    },
-  { l:"Star",       v:"fas fa-star",        i:"fas fa-star"       },
+  { l:"Instagram",        v:"fab fa-instagram",       i:"fab fa-instagram"       },
+  { l:"Twitter / X",     v:"fab fa-x-twitter",       i:"fab fa-x-twitter"       },
+  { l:"Twitch",          v:"fab fa-twitch",          i:"fab fa-twitch"          },
+  { l:"YouTube",         v:"fab fa-youtube",         i:"fab fa-youtube"         },
+  { l:"Discord",         v:"fab fa-discord",         i:"fab fa-discord"         },
+  { l:"TikTok",          v:"fab fa-tiktok",          i:"fab fa-tiktok"          },
+  { l:"GitHub",          v:"fab fa-github",          i:"fab fa-github"          },
+  { l:"LinkedIn",        v:"fab fa-linkedin",        i:"fab fa-linkedin"        },
+  { l:"Spotify",         v:"fab fa-spotify",         i:"fab fa-spotify"         },
+  { l:"Reddit",          v:"fab fa-reddit",          i:"fab fa-reddit"          },
+  { l:"Facebook",        v:"fab fa-facebook",        i:"fab fa-facebook"        },
+  { l:"WhatsApp",        v:"fab fa-whatsapp",        i:"fab fa-whatsapp"        },
+  { l:"Telegram",        v:"fab fa-telegram",        i:"fab fa-telegram"        },
+  { l:"Pinterest",       v:"fab fa-pinterest",       i:"fab fa-pinterest"       },
+  { l:"Snapchat",        v:"fab fa-snapchat",        i:"fab fa-snapchat"        },
+  { l:"Steam",           v:"fab fa-steam",           i:"fab fa-steam"           },
+  { l:"Patreon",         v:"fab fa-patreon",         i:"fab fa-patreon"         },
+  { l:"Medium",          v:"fab fa-medium",          i:"fab fa-medium"          },
+  { l:"Stack Overflow",  v:"fab fa-stack-overflow",  i:"fab fa-stack-overflow"  },
+  { l:"CodePen",         v:"fab fa-codepen",         i:"fab fa-codepen"         },
+  { l:"Behance",         v:"fab fa-behance",         i:"fab fa-behance"         },
+  { l:"Dribbble",        v:"fab fa-dribbble",        i:"fab fa-dribbble"        },
+  { l:"Link",            v:"fas fa-link",            i:"fas fa-link"            },
+  { l:"Livro / Guia",    v:"fas fa-book",            i:"fas fa-book"            },
+  { l:"Vídeo",           v:"fas fa-video",           i:"fas fa-video"           },
+  { l:"Gamepad",         v:"fas fa-gamepad",         i:"fas fa-gamepad"         },
+  { l:"Estrela",         v:"fas fa-star",            i:"fas fa-star"            },
+  { l:"Coração",         v:"fas fa-heart",           i:"fas fa-heart"           },
+  { l:"Envelope",        v:"fas fa-envelope",        i:"fas fa-envelope"        },
+  { l:"Busca",           v:"fas fa-search",          i:"fas fa-search"          },
+  { l:"Usuário",         v:"fas fa-user",            i:"fas fa-user"            },
+  { l:"Usuários",        v:"fas fa-users",           i:"fas fa-users"           },
+  { l:"Trava",           v:"fas fa-lock",            i:"fas fa-lock"            },
+  { l:"Destrava",        v:"fas fa-unlock",          i:"fas fa-unlock"          },
+  { l:"Sino",            v:"fas fa-bell",            i:"fas fa-bell"            },
+  { l:"Câmera",          v:"fas fa-camera",          i:"fas fa-camera"          },
+  { l:"Carrinho",        v:"fas fa-shopping-cart",   i:"fas fa-shopping-cart"   },
+  { l:"Sacola",          v:"fas fa-shopping-bag",    i:"fas fa-shopping-bag"    },
+  { l:"Cartão",          v:"fas fa-credit-card",     i:"fas fa-credit-card"     },
+  { l:"Globo",           v:"fas fa-globe",           i:"fas fa-globe"           },
+  { l:"Música",          v:"fas fa-music",           i:"fas fa-music"           },
+  { l:"Telefone",        v:"fas fa-phone",           i:"fas fa-phone"           },
+  { l:"Mapa",            v:"fas fa-map-marker-alt",  i:"fas fa-map-marker-alt"  },
+  { l:"Calendário",      v:"fas fa-calendar",        i:"fas fa-calendar"        },
+  { l:"Comentário",      v:"fas fa-comment",         i:"fas fa-comment"         },
+  { l:"Raio",            v:"fas fa-bolt",            i:"fas fa-bolt"            },
+  { l:"Fogo",            v:"fas fa-fire",            i:"fas fa-fire"            },
+  { l:"Folha",           v:"fas fa-leaf",            i:"fas fa-leaf"            },
+  { l:"Paleta",          v:"fas fa-palette",         i:"fas fa-palette"         },
+  { l:"Escudo",          v:"fas fa-shield-alt",      i:"fas fa-shield-alt"      },
+  { l:"Foguete",         v:"fas fa-rocket",          i:"fas fa-rocket"          },
+  { l:"Presente",        v:"fas fa-gift",            i:"fas fa-gift"            },
+  { l:"Relógio",         v:"fas fa-clock",           i:"fas fa-clock"           },
+  { l:"Troféu",          v:"fas fa-trophy",          i:"fas fa-trophy"          },
+  { l:"Jornal",          v:"fas fa-newspaper",       i:"fas fa-newspaper"       },
+  { l:"Enviar",          v:"fas fa-paper-plane",     i:"fas fa-paper-plane"     },
+  { l:"Check",           v:"fas fa-check",           i:"fas fa-check"           },
+  { l:"X",               v:"fas fa-xmark",           i:"fas fa-xmark"           },
+  { l:"Mais",            v:"fas fa-plus",            i:"fas fa-plus"            },
+  { l:"Menos",           v:"fas fa-minus",           i:"fas fa-minus"           },
+  { l:"Elipse",          v:"fas fa-ellipsis-h",      i:"fas fa-ellipsis-h"      },
+  { l:"Seta Direita",    v:"fas fa-arrow-right",     i:"fas fa-arrow-right"     },
+  { l:"Seta Esquerda",   v:"fas fa-arrow-left",      i:"fas fa-arrow-left"      },
+  { l:"Chevron Baixo",   v:"fas fa-chevron-down",    i:"fas fa-chevron-down"    },
+  { l:"Menu",            v:"fas fa-bars",            i:"fas fa-bars"            },
 ];
 
 /* ============================================================
@@ -43,6 +92,44 @@ document.querySelectorAll(".tab").forEach(btn => {
     document.getElementById("sec-" + btn.dataset.tab).classList.add("active");
     if (btn.dataset.tab === "json") gerarJSON();
   });
+});
+
+/* ============================================================
+   PANEL RESIZER — arrastar para ajustar largura
+   ============================================================ */
+let isResizing = false;
+let startX, startWidthPreview, startWidthEditor;
+
+const resizer = document.getElementById('panel-resizer');
+const previewPanel = document.querySelector('.preview-panel');
+const editorPanel = document.querySelector('.editor-panel');
+
+resizer.addEventListener('mousedown', (e) => {
+  isResizing = true;
+  startX = e.clientX;
+  startWidthPreview = previewPanel.offsetWidth;
+  startWidthEditor = editorPanel.offsetWidth;
+  document.body.style.cursor = 'col-resize';
+  document.body.style.userSelect = 'none';
+});
+
+document.addEventListener('mousemove', (e) => {
+  if (!isResizing) return;
+
+  const deltaX = e.clientX - startX;
+  const newPreviewWidth = Math.max(320, Math.min(startWidthPreview + deltaX, window.innerWidth - 400));
+  const newEditorWidth = Math.max(400, window.innerWidth - newPreviewWidth - resizer.offsetWidth);
+
+  previewPanel.style.width = newPreviewWidth + 'px';
+  editorPanel.style.width = newEditorWidth + 'px';
+});
+
+document.addEventListener('mouseup', () => {
+  if (isResizing) {
+    isResizing = false;
+    document.body.style.cursor = '';
+    document.body.style.userSelect = '';
+  }
 });
 
 /* ============================================================
@@ -155,22 +242,38 @@ document.body.addEventListener("input", e => {
 });
 
 /* ============================================================
-   HELPER — Icon Picker HTML  (com botão de arquivo)
+   HELPER — Icon Picker HTML  (com busca e previsualizador)
    ============================================================ */
 function iconPickerHTML(fieldId, currentValue = "") {
   const esc = v => (v||"").replace(/"/g,"&quot;");
   const fileId  = fieldId + "-file";
   const thumbId = fieldId + "-thumb";
+  const previewId = fieldId + "-preview";
+  const faClass = isFaIcon(currentValue) ? currentValue : "";
+  
   return `
     <div class="icon-picker-wrap" data-picker-id="${fieldId}">
       <div class="icon-input-row">
         <input id="${fieldId}" type="text" value="${esc(currentValue)}"
-               placeholder="fab fa-discord  ou  nome-do-arquivo.png">
+               placeholder="fab fa-discord, fas fa-heart, etc.">
+        <span class="icon-preview-box" id="${previewId}" data-dropdown="${fieldId}-dropdown">
+          ${faClass ? `<i class="${faClass}" title="Prévia do ícone"></i>` : '<span style="color:#666">—</span>'}
+        </span>
         <label class="btn btn-file" for="${fileId}" title="Escolher imagem do computador">
           <i class="fas fa-ellipsis"></i>
         </label>
         <input type="file" id="${fileId}" accept="image/*" style="display:none"
                data-target="${fieldId}" data-thumb="${thumbId}">
+      </div>
+      <div class="icon-help-text">
+        <a href="https://fontawesome.com/search" target="_blank" rel="noopener">
+          <i class="fas fa-external-link-alt"></i> Procurar ícones no Font Awesome
+        </a>
+        <span class="hint">Cole a classe completa aqui (ex: fab fa-instagram) ou clique na prévia.</span>
+      </div>
+      <div class="icon-search-dropdown" id="${fieldId}-dropdown" style="display:none">
+        <input type="text" class="icon-search-input" placeholder="Buscar ícone..." />
+        <div class="icon-search-results"></div>
       </div>
       <div id="${thumbId}" class="icon-thumb-wrap" style="display:none">
         <img class="icon-thumb-img" src="" alt="">
@@ -179,17 +282,74 @@ function iconPickerHTML(fieldId, currentValue = "") {
           Copie este arquivo para <code>resources/icons/</code>
         </div>
       </div>
-      <p class="icon-section-label">Font Awesome:</p>
-      <div class="icon-grid">
-        ${FA_ICONS.map(i =>
-          `<span class="icon-opt${currentValue===i.v?" sel":""}"
-               data-target="${fieldId}" data-value="${i.v}">
-             <i class="${i.i}"></i>${i.l}
-           </span>`
-        ).join("")}
-      </div>
     </div>`;
 }
+
+function renderIconResults(dropdownId, icons) {
+  const dropdown = document.getElementById(dropdownId);
+  if (!dropdown) return;
+  const results = dropdown.querySelector(".icon-search-results");
+  if (!results) return;
+
+  results.innerHTML = icons.slice(0, 80).map(icon => `
+    <div class="icon-search-item" data-value="${icon.v}">
+      <i class="${icon.v}"></i>
+      <span>${icon.l}</span>
+      <code>${icon.v}</code>
+    </div>
+  `).join("");
+
+  results.querySelectorAll(".icon-search-item").forEach(item => {
+    item.addEventListener("click", () => {
+      const dropdown = item.closest(".icon-search-dropdown");
+      if (!dropdown) return;
+      const picker = dropdown.closest(".icon-picker-wrap");
+      const targetId = picker?.dataset.pickerId;
+      const targetInput = document.getElementById(targetId);
+      if (!targetInput) return;
+      targetInput.value = item.dataset.value;
+      targetInput.dispatchEvent(new Event("input", { bubbles: true }));
+      dropdown.style.display = "none";
+      debouncedSave();
+      debouncedUpdatePreview();
+    });
+  });
+}
+
+/* Abre / fecha dropdown de busca de ícones */
+document.body.addEventListener("click", e => {
+  const previewBox = e.target.closest(".icon-preview-box");
+  if (previewBox) {
+    const dropdown = document.getElementById(previewBox.dataset.dropdown);
+    if (!dropdown) return;
+    const isOpen = dropdown.style.display === "block";
+    document.querySelectorAll(".icon-search-dropdown").forEach(d => d.style.display = "none");
+    if (!isOpen) {
+      dropdown.style.display = "block";
+      const search = dropdown.querySelector(".icon-search-input");
+      if (search) {
+        search.value = "";
+        renderIconResults(dropdown.id, FA_ICONS);
+        search.focus();
+      }
+    }
+    return;
+  }
+
+  if (!e.target.closest(".icon-search-dropdown") && !e.target.closest(".icon-preview-box")) {
+    document.querySelectorAll(".icon-search-dropdown").forEach(d => d.style.display = "none");
+  }
+});
+
+document.body.addEventListener("input", e => {
+  const searchInput = e.target.closest(".icon-search-input");
+  if (!searchInput) return;
+  const query = searchInput.value.trim().toLowerCase();
+  const dropdown = searchInput.closest(".icon-search-dropdown");
+  if (!dropdown) return;
+  const filtered = query ? FA_ICONS.filter(icon => icon.l.toLowerCase().includes(query) || icon.v.toLowerCase().includes(query)) : FA_ICONS;
+  renderIconResults(dropdown.id, filtered);
+});
 
 /* ============================================================
    HELPER — Bloco de estilo (ícone + cor do ícone + cor do texto + font size)
@@ -227,6 +387,24 @@ function styleBlockHTML(prefix, data = {}) {
 
 /* Mostra/esconde cor do ícone conforme tipo de ícone */
 document.body.addEventListener("input", e => {
+  // Atualiza preview de ícone FA ao digitar
+  if (e.target.closest(".icon-picker-wrap input[type='text']")) {
+    const input = e.target.closest(".icon-picker-wrap input[type='text']");
+    const pickerId = input.closest(".icon-picker-wrap")?.dataset.pickerId;
+    if (!pickerId) return;
+    
+    const previewEl = document.getElementById(pickerId + "-preview");
+    const value = input.value.trim();
+    
+    if (previewEl) {
+      if (isFaIcon(value)) {
+        previewEl.innerHTML = `<i class="${value}" title="Prévia do ícone"></i>`;
+      } else {
+        previewEl.innerHTML = '<span style="color:#666">—</span>';
+      }
+    }
+  }
+
   if (!e.target.classList.contains("icon-picker-wrap input") && e.target.closest(".icon-picker-wrap")) {
     const wrap   = e.target.closest(".icon-picker-wrap");
     const prefix = wrap?.dataset.pickerId?.replace(/-i$/, "");
@@ -252,7 +430,6 @@ document.body.addEventListener("change", e => {
   if (!textInput) return;
 
   textInput.value = file.name;
-  textInput.closest(".icon-picker-wrap")?.querySelectorAll(".icon-opt").forEach(o => o.classList.remove("sel"));
 
   // Esconde cor do ícone (é imagem, não FA)
   const prefix = targetId.replace(/-i$/, "");
@@ -307,23 +484,6 @@ document.body.addEventListener("click", e => {
     addSubLink(pastaId);
     debouncedSave(); debouncedUpdatePreview();
     return;
-  }
-
-  // Icon picker — clique num ícone FA rápido
-  const opt = e.target.closest(".icon-grid [data-target]");
-  if (opt) {
-    const input = document.getElementById(opt.dataset.target);
-    if (!input) return;
-    input.value = opt.dataset.value;
-    opt.closest(".icon-grid").querySelectorAll(".icon-opt").forEach(o => o.classList.remove("sel"));
-    opt.classList.add("sel");
-
-    // Mostra/esconde extras de cor do ícone
-    const prefix = opt.dataset.target.replace(/-i$/, "");
-    const extras = document.getElementById(prefix + "-extras");
-    if (extras) extras.style.display = isFaIcon(opt.dataset.value) ? "block" : "none";
-
-    debouncedSave(); debouncedUpdatePreview();
   }
 });
 
@@ -424,7 +584,9 @@ function addPasta(data = {}) {
   div.dataset.type = "pasta";
 
   // Estilo da pasta (cor do texto, ícone com cor, font-size)
-  const { faClass: pIconClass, iconColor: pIconColor, fontSize: pFontSize } = parseIconValue(data.Icon || "");
+  const { faClass: pIconClass, iconColor: pIconColor, fontSize: pFontSize } = parseIconValue(data.icon || data.Icon || "");
+  // Fallback para iconColor direto (novo modelo)
+  const pIconColorVal = data.iconColor || pIconColor || "";
   const pTextColor = data.textColor || "";
 
   div.innerHTML = `
@@ -454,12 +616,12 @@ function addPasta(data = {}) {
       <div class="style-block">
         <div class="field-group">
           <label>Ícone da Pasta <span class="hint" style="display:inline">— arquivo em resources/icons/ ou classe FA</span></label>
-          ${iconPickerHTML("pi-" + id, pIconClass || data.Icon || "")}
+          ${iconPickerHTML("pi-" + id, pIconClass || data.icon || data.Icon || "")}
         </div>
-        <div class="style-extra" id="pi-${id}-extras" style="display:${isFaIcon(pIconClass||data.Icon||"")?'block':'none'}">
+        <div class="style-extra" id="pi-${id}-extras" style="display:${isFaIcon(pIconClass||data.icon||data.Icon||"")?'block':'none'}">
           <div class="field-group">
             <label>Cor do ícone</label>
-            ${colorPickerHTML("pi-" + id + "-ic", "<i class='fas fa-palette'></i> Ícone", pIconColor)}
+            ${colorPickerHTML("pi-" + id + "-ic", "<i class='fas fa-palette'></i> Ícone", pIconColorVal)}
           </div>
         </div>
         <div class="field-group">
@@ -543,6 +705,8 @@ function addDirectLink(data = {}) {
 
   const { faClass, iconColor, fontSize } = parseIconValue(data.icon || "");
   const textColor = data.textColor || "";
+  // Fallback para iconColor direto (novo modelo)
+  const iconColorVal = data.iconColor || iconColor || "";
 
   div.innerHTML = `
     <div class="folder-header">
@@ -571,7 +735,7 @@ function addDirectLink(data = {}) {
         <label>URL</label>
         <input id="dlu-${id}" type="url" value="${escapeHTML(data.url)}" placeholder="https://discord.gg/...">
       </div>
-      ${styleBlockHTML("dl-" + id, { icon: faClass||data.icon||"", iconColor, textColor, fontSize })}
+      ${styleBlockHTML("dl-" + id, { icon: faClass||data.icon||"", iconColor: iconColorVal, textColor, fontSize })}
     </div>`;
 
     //document.getElementById("items-list").appendChild(div);
@@ -616,8 +780,10 @@ function getEditorData() {
     if (obj.nome || obj.url) redes.push(obj);
   });
 
+  // Items unificados (pastas E links diretos) - preserva a ordem do DOM
+  const items = [];
+  
   // Pastas
-  const pastas = [];
   document.querySelectorAll("[id^='pasta-']").forEach(el => {
     const id    = el.id.replace("pasta-", "");
     const links = [];
@@ -643,19 +809,21 @@ function getEditorData() {
     const pIconVal   = isFaIcon(rawPIcon) ? buildIconValue(rawPIcon, pIc, pFs) : rawPIcon;
     const pTextColor = readColor("p-" + id + "-tc");
 
-    const pasta = {
+    const item = {
+      id,
+      type: "folder",
       nome:  get("pn-" + id),
       topic: get("pt-" + id),
-      Icon:  pIconVal,
+      icon:  pIconVal,
+      iconColor: pIc || "",
+      textColor: pTextColor || "",
+      fontSize:  pFs || "",
       links,
     };
-    if (pTextColor) pasta.textColor = pTextColor;
-    if (pFs)        pasta.fontSize  = pFs;
-    if (pasta.nome) pastas.push(pasta);
+    if (item.nome) items.push(item);
   });
 
   // Links diretos
-  const links = [];
   document.querySelectorAll("[id^='dl-']").forEach(el => {
     const id        = el.id.replace("dl-", "");
     const rawIcon   = get("dl-" + id + "-i");
@@ -664,14 +832,21 @@ function getEditorData() {
     const iconVal   = isFaIcon(rawIcon) ? buildIconValue(rawIcon, ic, fs) : rawIcon;
     const textColor = readColor("dl-" + id + "-tc");
 
-    const link = { topic: get("dlt-"+id), nome: get("dln-"+id), url: get("dlu-"+id) };
-    if (iconVal)   link.icon      = iconVal;
-    if (textColor) link.textColor = textColor;
-    if (fs)        link.fontSize  = fs;
-    if (link.nome || link.url) links.push(link);
+    const item = { 
+      id,
+      type: "link",
+      topic: get("dlt-"+id), 
+      nome: get("dln-"+id), 
+      url: get("dlu-"+id),
+      icon: iconVal || "",
+      iconColor: ic || "",
+      textColor: textColor || "",
+      fontSize: fs || ""
+    };
+    if (item.nome || item.url) items.push(item);
   });
 
-  return { profile, name, description, background, theme, redes, pastas, links };
+  return { profile, name, description, background, theme, redes, items };
 }
 
 /* ============================================================
@@ -837,10 +1012,27 @@ const debouncedUpdatePreview = debounce(atualizarPreview, 200);
    LOCAL STORAGE
    ============================================================ */
 function saveToLocal() {
+  const statusEl = document.getElementById("save-indicator");
+  if (statusEl) {
+    statusEl.classList.add("saving");
+    statusEl.innerHTML = '<i class="fas fa-spinner"></i> Salvando...';
+  }
+  
   try {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(getEditorData()));
     mostrarSalvo();
-  } catch(e) { console.warn("Erro ao salvar:", e); }
+  } catch(e) { 
+    console.warn("Erro ao salvar:", e);
+    if (statusEl) {
+      statusEl.classList.remove("saving");
+      statusEl.classList.add("error");
+      statusEl.innerHTML = '<i class="fas fa-exclamation-circle"></i> Erro ao salvar';
+      setTimeout(() => {
+        statusEl.classList.remove("error");
+        statusEl.innerHTML = '<i class="fas fa-cloud"></i> Salvo';
+      }, 2000);
+    }
+  }
 }
 const debouncedSave = debounce(saveToLocal, 600);
 
@@ -856,9 +1048,12 @@ function loadFromLocal() {
 function mostrarSalvo() {
   const el = document.getElementById("save-indicator");
   if (!el) return;
-  el.classList.add("visible");
   clearTimeout(el._hideTimer);
-  el._hideTimer = setTimeout(() => el.classList.remove("visible"), 2000);
+  el.classList.remove("saving");
+  el.innerHTML = '<i class="fas fa-check-circle"></i> Salvo';
+  el._hideTimer = setTimeout(() => {
+    el.innerHTML = '<i class="fas fa-cloud"></i> Salvo';
+  }, 1500);
 }
 
 /* ============================================================
@@ -873,20 +1068,43 @@ document.getElementById("btn-copiar").addEventListener("click", () => {
   gerarJSON();
   navigator.clipboard.writeText(document.getElementById("json-out").value).then(() => {
     const msg = document.getElementById("copy-ok");
-    msg.style.display = "inline";
-    setTimeout(() => msg.style.display = "none", 2200);
+    msg.classList.add("show");
+    setTimeout(() => msg.classList.remove("show"), 2200);
+  }).catch(() => {
+    alert("Falha ao copiar. Tente novamente.");
   });
 });
 
 /* ============================================================
-   DOWNLOAD PACOTE
+   DOWNLOAD JSON / PACOTE
    ============================================================ */
-function BaixarPacote() {
-  const url = "https://github.com/user-attachments/files/26864499/Release.webonce.zip";
-  const a = document.createElement("a"); a.href = url;
-  a.download = url.split("/").pop(); document.body.appendChild(a); a.click(); document.body.removeChild(a);
+function downloadJSON() {
+  gerarJSON();
+  const json = document.getElementById("json-out").value;
+  const blob = new Blob([json], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "data.json";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
 }
-document.getElementById("btn-download").addEventListener("click", BaixarPacote);
+
+function BaixarPacote() {
+  const url = "https://github.com/user-attachments/files/26880254/Release.zip";
+  const a = document.createElement("a");
+  a.href = url;
+  a.target = "_blank";
+  a.download = "hyperlink-package.zip";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+document.getElementById("btn-download")?.addEventListener("click", BaixarPacote);
+document.getElementById("btn-download-json")?.addEventListener("click", downloadJSON);
 
 /* ============================================================
    LIMPAR EDITOR
@@ -896,13 +1114,10 @@ function limparEditor() {
   const jsonOut = document.getElementById("json-out"); if (jsonOut) jsonOut.value = "";
   ["p-foto","p-nome","p-desc","p-bg"].forEach(id => { const el=document.getElementById(id); if(el) el.value=""; });
   ["foto-preview","bg-preview"].forEach(id => { const el=document.getElementById(id); if(el) el.style.display="none"; });
+  localStorage.removeItem(LOCAL_STORAGE_KEY);
+  atualizarPreview();
+  setStatus("Editor limpo.","load-ok");
 }
-
-document.getElementById("btn-clear").addEventListener("click", () => {
-  if (confirm("Limpar o editor? O rascunho salvo também será apagado.")) {
-    limparEditor(); localStorage.removeItem(LOCAL_STORAGE_KEY); atualizarPreview(); setStatus("Editor limpo.","load-ok");
-  }
-});
 
 /* ============================================================
    CARREGAR JSON DO USUÁRIO
@@ -911,8 +1126,10 @@ function carregarDoUsuario(file) {
   const reader = new FileReader();
   reader.onload = ev => {
     try {
-      limparEditor(); preencherEditor(JSON.parse(ev.target.result));
-      saveToLocal(); atualizarPreview(); setStatus("✓ JSON carregado com sucesso","load-ok");
+      const data = JSON.parse(ev.target.result);
+      const migratedData = migrateDataFormat(data); // Migração automática
+      limparEditor(); preencherEditor(migratedData);
+      saveToLocal(); atualizarPreview(); setStatus("✓ JSON carregado com sucesso (migrado se necessário)","load-ok");
     } catch(err) { setStatus("⚠ Arquivo inválido","load-err"); }
   };
   reader.readAsText(file);
@@ -920,9 +1137,78 @@ function carregarDoUsuario(file) {
 document.getElementById("jsonFileInput").addEventListener("change", ev => { if(ev.target.files[0]) carregarDoUsuario(ev.target.files[0]); });
 
 /* ============================================================
+   MIGRAÇÃO RETROCOMPATÍVEL — Converte formato antigo para novo
+   Formato antigo: { pastas[], links[] }
+   Formato novo:   { items[] com type:"folder"|"link" }
+   ============================================================ */
+function migrateDataFormat(data) {
+  // Se já tem items[], está no formato novo
+  if (data.items && Array.isArray(data.items)) {
+    return data; // Já está no formato correto
+  }
+
+  // Se tem pastas[] ou links[], está no formato antigo - migrar
+  if (data.pastas || data.links) {
+    console.log("🔄 Migrando dados do formato antigo para o novo...");
+
+    const migratedData = { ...data };
+    migratedData.items = [];
+
+    // Migrar pastas antigas
+    if (data.pastas && Array.isArray(data.pastas)) {
+      data.pastas.forEach(pasta => {
+        const migratedPasta = {
+          id: pasta.id || generateId(),
+          type: "folder",
+          nome: pasta.nome || "",
+          topic: pasta.topic || "",
+          icon: pasta.icon || pasta.Icon || "", // Suporte para Icon antigo
+          iconColor: pasta.iconColor || "",
+          textColor: pasta.textColor || "",
+          fontSize: pasta.fontSize || "",
+          links: pasta.links || []
+        };
+        migratedData.items.push(migratedPasta);
+      });
+    }
+
+    // Migrar links diretos antigos
+    if (data.links && Array.isArray(data.links)) {
+      data.links.forEach(link => {
+        const migratedLink = {
+          id: link.id || generateId(),
+          type: "link",
+          nome: link.nome || "",
+          topic: link.topic || "",
+          url: link.url || "",
+          icon: link.icon || "",
+          iconColor: link.iconColor || "",
+          textColor: link.textColor || "",
+          fontSize: link.fontSize || ""
+        };
+        migratedData.items.push(migratedLink);
+      });
+    }
+
+    // Remover campos antigos
+    delete migratedData.pastas;
+    delete migratedData.links;
+
+    console.log("✅ Migração concluída! Dados convertidos para o novo formato.");
+    return migratedData;
+  }
+
+  // Se não tem nenhum dos formatos, retornar como está
+  return data;
+}
+
+/* ============================================================
    PREENCHER EDITOR
    ============================================================ */
 function preencherEditor(data) {
+  // Aplicar migração automática se necessário
+  data = migrateDataFormat(data);
+
   const set = (id, val) => { const el=document.getElementById(id); if(el) el.value=val||""; };
   set("p-foto", data.profile); set("p-nome", data.name); set("p-desc", data.description);
   set("p-bg",   data.background); set("p-theme", data.theme);
@@ -931,8 +1217,18 @@ function preencherEditor(data) {
   if (data.background) { const img=document.getElementById("bg-preview"); if(img){img.src=data.background;img.style.display="block";} }
 
   (data.redes  ||[]).forEach(r => addRede(r));
-  (data.pastas ||[]).forEach(p => addPasta(p));
-  (data.links  ||[]).forEach(l => addDirectLink(l));
+
+  // Suporta novo modelo (items) e modelo antigo (pastas + links) - agora com migração automática
+  if (data.items) {
+    data.items.forEach(item => {
+      if (item.type === "folder") addPasta(item);
+      else if (item.type === "link") addDirectLink(item);
+    });
+  } else {
+    // Fallback para modelo antigo (não deveria acontecer após migração)
+    (data.pastas ||[]).forEach(p => addPasta(p));
+    (data.links  ||[]).forEach(l => addDirectLink(l));
+  }
 }
 
 /* ============================================================
@@ -949,13 +1245,12 @@ function setStatus(msg, cls) {
 window.addEventListener("load", () => {
   const hadLocal = loadFromLocal();
   if (hadLocal) {
-    setStatus("✓ Rascunho restaurado do navegador","load-ok"); atualizarPreview();
+    setStatus("✓ Rascunho restaurado do navegador","load-ok");
   } else {
-    fetch(DATA_JSON_PATH)
-      .then(res => { if(!res.ok) throw new Error(); return res.json(); })
-      .then(data => { preencherEditor(data); saveToLocal(); setStatus("✓ data.json carregado","load-ok"); atualizarPreview(); })
-      .catch(() => { setStatus("⚠ Nenhum rascunho ou data.json encontrado","load-err"); atualizarPreview(); });
+    limparEditor();
+    setStatus("✓ Sem rascunho local — edite diretamente ou carregue um JSON","load-ok");
   }
+  atualizarPreview();
 });
 
 /* ============================================================
