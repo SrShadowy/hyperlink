@@ -51,10 +51,15 @@ body.light-theme {
 #profile {
   width: 100px;
   height: 100px;
+  aspect-ratio: 1;
   border-radius: 50%;
   object-fit: cover;
+  object-position: center;
   margin-bottom: 10px;
   align-self: center;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 #description {

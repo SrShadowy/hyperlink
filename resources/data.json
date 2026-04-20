@@ -14,242 +14,30 @@
       "nome": "X",
       "url": "https://x.com/SrShadowy",
       "icon": "fab fa-x-twitter"
-    },
-    {
-      "nome": "Discord",
-      "url": "https://discord.gg/ayu6HFuSdu",
-      "icon": "fab fa-discord"
-    },
-    {
-      "nome": "Website",
-      "url": "https://srshadowy.github.io/",
-      "icon": "fas fa-globe"
     }
   ],
-  "items": [
+  "pastas": [
     {
-      "id": "mo6i6q3sqnowmxviv7",
-      "type": "folder",
-      "nome": "Ferramentas & Utilitários",
-      "topic": "Principais",
-      "icon": "fas fa-tools\" style=\"color: rgb(255, 159, 64); font-size: 14px;",
-      "iconColor": "rgb(255, 159, 64)",
-      "textColor": "rgb(255, 159, 64)",
-      "fontSize": "14",
-      "links": [
-        {
-          "nome": "App Launcher",
-          "url": "https://github.com/SrShadowy/AppLauncher",
-          "icon": "fas fa-rocket",
-          "textColor": "rgb(54, 162, 235)"
-        },
-        {
-          "nome": "Memory Scanner",
-          "url": "https://github.com/SrShadowy/MemoryScanner",
-          "icon": "fas fa-microchip",
-          "textColor": "rgb(75, 192, 192)"
-        },
-        {
-          "nome": "Mouse Simulator",
-          "url": "https://github.com/SrShadowy/Mouse_Simulator",
-          "icon": "fas fa-mouse",
-          "textColor": "rgb(153, 102, 255)"
-        },
-        {
-          "nome": "ProtonRunner",
-          "url": "https://github.com/SrShadowy/ProtonRunner",
-          "icon": "fas fa-play",
-          "textColor": "rgb(255, 99, 132)"
-        },
-        {
-          "nome": "GameGate",
-          "url": "https://github.com/SrShadowy/GameGate",
-          "icon": "fas fa-gamepad",
-          "textColor": "rgb(201, 203, 207)"
-        }
-      ]
-    },
-    {
-      "id": "mo6i6q3upfbspev1v5",
-      "type": "folder",
-      "nome": "Game Dev & Graphics",
+      "id": "pasta-antiga-1",
+      "nome": "Ferramentas",
       "topic": "Desenvolvimento",
-      "icon": "fas fa-cube\" style=\"color: rgb(75, 192, 192); font-size: 14px;",
-      "iconColor": "rgb(75, 192, 192)",
-      "textColor": "rgb(75, 192, 192)",
-      "fontSize": "14",
+      "Icon": "fas fa-tools",
       "links": [
         {
-          "nome": "JSFILE - Game Engine",
-          "url": "https://github.com/SrShadowy/JSFILE",
-          "icon": "fas fa-dice",
-          "textColor": "rgb(54, 162, 235)"
-        },
-        {
-          "nome": "Rise Overlay (MH Rise)",
-          "url": "https://github.com/SrShadowy/Rise-Overlay",
-          "icon": "fas fa-layer-group",
-          "textColor": "rgb(255, 159, 64)"
+          "nome": "VS Code",
+          "url": "https://code.visualstudio.com/",
+          "icon": "fas fa-code"
         }
       ]
-    },
+    }
+  ],
+  "links": [
     {
-      "id": "mo6i6q3vd1wjm8i7jw",
-      "type": "folder",
-      "nome": "Projetos Web",
-      "topic": "Frontend",
-      "icon": "fas fa-globe\" style=\"color: rgb(54, 162, 235); font-size: 14px;",
-      "iconColor": "rgb(54, 162, 235)",
-      "textColor": "rgb(54, 162, 235)",
-      "fontSize": "14",
-      "links": [
-        {
-          "nome": "Pokédex",
-          "url": "https://github.com/SrShadowy/pokedex",
-          "icon": "fas fa-search",
-          "textColor": "rgb(255, 99, 132)"
-        },
-        {
-          "nome": "Teclado Sonoro",
-          "url": "https://github.com/SrShadowy/Teclado_Sonoro",
-          "icon": "fas fa-music",
-          "textColor": "rgb(75, 192, 192)"
-        },
-        {
-          "nome": "PyScript - Jogo da Velha",
-          "url": "https://github.com/SrShadowy/PyScript-Jogo-Da-Velha",
-          "icon": "fas fa-chess",
-          "textColor": "rgb(153, 102, 255)"
-        },
-        {
-          "nome": "Gallery",
-          "url": "https://github.com/SrShadowy/gallery",
-          "icon": "fas fa-image",
-          "textColor": "rgb(255, 159, 64)"
-        },
-        {
-          "nome": "ImNotVM.JS",
-          "url": "https://github.com/SrShadowy/ImNotVM.JS",
-          "icon": "fas fa-code",
-          "textColor": "rgb(201, 203, 207)"
-        }
-      ]
-    },
-    {
-      "id": "mo6i6q3w3q587u4a9w3",
-      "type": "folder",
-      "nome": "Backend & APIs",
-      "topic": "Backend",
-      "icon": "fas fa-server\" style=\"color: rgb(153, 102, 255); font-size: 14px;",
-      "iconColor": "rgb(153, 102, 255)",
-      "textColor": "rgb(153, 102, 255)",
-      "fontSize": "14",
-      "links": [
-        {
-          "nome": "API REST Swagger",
-          "url": "https://github.com/SrShadowy/API-REST_Swagger",
-          "icon": "fas fa-exchange-alt",
-          "textColor": "rgb(54, 162, 235)"
-        },
-        {
-          "nome": "PHP API REST",
-          "url": "https://github.com/SrShadowy/PHP-api_rest",
-          "icon": "fab fa-php",
-          "textColor": "rgb(75, 192, 192)"
-        },
-        {
-          "nome": "Backend Test",
-          "url": "https://github.com/SrShadowy/backend-test",
-          "icon": "fas fa-bug",
-          "textColor": "rgb(255, 159, 64)"
-        }
-      ]
-    },
-    {
-      "id": "mo6i6q3xbn0rw9xcgct",
-      "type": "folder",
-      "nome": "Security & Reverse Eng",
-      "topic": "Segurança",
-      "icon": "fas fa-shield-alt\" style=\"color: rgb(255, 99, 132); font-size: 14px;",
-      "iconColor": "rgb(255, 99, 132)",
-      "textColor": "rgb(255, 99, 132)",
-      "fontSize": "14",
-      "links": [
-        {
-          "nome": "Ultimate Anti-Cheat",
-          "url": "https://github.com/SrShadowy/UltimateAntiCheat",
-          "icon": "fas fa-lock",
-          "textColor": "rgb(255, 99, 132)"
-        },
-        {
-          "nome": "POC Detection CheatEngine",
-          "url": "https://github.com/SrShadowy/POC-Detection-CheatEngine",
-          "icon": "fas fa-shield-virus",
-          "textColor": "rgb(255, 159, 64)"
-        },
-        {
-          "nome": "Anti-Cheat Scanner",
-          "url": "https://github.com/SrShadowy/AntiCheat",
-          "icon": "fas fa-exclamation-triangle",
-          "textColor": "rgb(201, 203, 207)"
-        },
-        {
-          "nome": "Linux Keyboard Events",
-          "url": "https://github.com/SrShadowy/linux-getting-keyboard-events",
-          "icon": "fas fa-keyboard",
-          "textColor": "rgb(54, 162, 235)"
-        },
-        {
-          "nome": "HookEx",
-          "url": "https://github.com/SrShadowy/HookEx",
-          "icon": "fas fa-link",
-          "textColor": "rgb(75, 192, 192)"
-        }
-      ]
-    },
-    {
-      "id": "mo6i6q3zrdmbix7w6ao",
-      "type": "link",
-      "topic": "Desenvolvimento",
-      "nome": "Reshader",
-      "url": "https://github.com/SrShadowy/reshade",
-      "icon": "fas fa-star",
-      "iconColor": "",
-      "textColor": "",
-      "fontSize": ""
-    },
-    {
-      "id": "mo6i6q3zqs05f3gqm7",
-      "type": "link",
-      "topic": "Colaborações",
-      "nome": "ImGuiBuilder - Code Building",
-      "url": "https://github.com/Code-Building/ImGuiBuilder",
-      "icon": "fas fa-users",
-      "iconColor": "",
-      "textColor": "rgb(201, 203, 207)",
-      "fontSize": ""
-    },
-    {
-      "id": "mo6i6q3zujeu9xqvltc",
-      "type": "link",
-      "topic": "Mais",
-      "nome": "Entre em contato",
-      "url": "https://github.com/srshadowy",
-      "icon": "fas fa-envelope",
-      "iconColor": "",
-      "textColor": "rgb(255, 99, 132)",
-      "fontSize": ""
-    },
-    {
-      "id": "mo6i6q40uxovymvyrfq",
-      "type": "link",
-      "topic": "Mais",
-      "nome": "Meu Portfolio",
+      "id": "link-antigo-1",
+      "nome": "Meu Website",
+      "topic": "Pessoal",
       "url": "https://srshadowy.github.io/",
-      "icon": "fas fa-briefcase",
-      "iconColor": "",
-      "textColor": "rgb(54, 162, 235)",
-      "fontSize": ""
+      "icon": "fas fa-globe"
     }
   ]
 }

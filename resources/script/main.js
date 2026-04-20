@@ -58,6 +58,72 @@
       pastasContainer: document.getElementById('pastas')
     };
 
+    /* ============================================================
+     MIGRAÇÃO RETROCOMPATÍVEL — Converte formato antigo para novo
+     Formato antigo: { pastas[], links[] }
+     Formato novo:   { items[] com type:"folder"|"link" }
+     ============================================================ */
+    function migrateDataFormat(data) {
+      // Se já tem items[], está no formato novo
+      if (data.items && Array.isArray(data.items)) {
+        return data; // Já está no formato correto
+      }
+
+      // Se tem pastas[] ou links[], está no formato antigo - migrar
+      if (data.pastas || data.links) {
+        console.log("🔄 Migrando dados do formato antigo para o novo...");
+
+        const migratedData = { ...data };
+        migratedData.items = [];
+
+        // Migrar pastas antigas
+        if (data.pastas && Array.isArray(data.pastas)) {
+          data.pastas.forEach(pasta => {
+            const migratedPasta = {
+              id: pasta.id || generateId(),
+              type: "folder",
+              nome: pasta.nome || "",
+              topic: pasta.topic || "",
+              icon: pasta.icon || pasta.Icon || "", // Suporte para Icon antigo
+              iconColor: pasta.iconColor || "",
+              textColor: pasta.textColor || "",
+              fontSize: pasta.fontSize || "",
+              links: pasta.links || []
+            };
+            migratedData.items.push(migratedPasta);
+          });
+        }
+
+        // Migrar links diretos antigos
+        if (data.links && Array.isArray(data.links)) {
+          data.links.forEach(link => {
+            const migratedLink = {
+              id: link.id || generateId(),
+              type: "link",
+              nome: link.nome || "",
+              topic: link.topic || "",
+              url: link.url || "",
+              icon: link.icon || "",
+              iconColor: link.iconColor || "",
+              textColor: link.textColor || "",
+              fontSize: link.fontSize || ""
+            };
+            migratedData.items.push(migratedLink);
+          });
+        }
+
+        // Remover campos antigos
+        delete migratedData.pastas;
+        delete migratedData.links;
+
+        console.log("✅ Migração concluída! Dados convertidos para o novo formato.");
+        return migratedData;
+      }
+
+      // Se não tem nenhum dos formatos, retornar como está
+      return data;
+    }
+
     fetch('./resources/data.json')
       .then(res => res.json())
       .then(data => {
@@ -91,20 +157,11 @@
         const topics = {};
         const topicLinks = {};
 
-        // Suporta novo modelo (items) e modelo antigo (pastas + links)
-        let items = [];
-        if (data.items) {
-          items = data.items;
-        } else if (data.pastas || data.links) {
-          // Fallback para modelo antigo
-          items = [];
-          (data.pastas || []).forEach(p => {
-            items.push({ type: 'folder', ...p, Icon: p.Icon });
-          });
-          (data.links || []).forEach(l => {
-            items.push({ type: 'link', ...l });
-          });
-        }
+        // Aplicar migração automática se necessário
+        data = migrateDataFormat(data);
+
+        // Suporta novo modelo (items) - migração automática garante que sempre estará neste formato
+        let items = data.items || [];
 
         // Agrupar items por tópico em uma única passagem
         items.forEach(item => {

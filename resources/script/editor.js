@@ -1005,8 +1005,10 @@ function carregarDoUsuario(file) {
   const reader = new FileReader();
   reader.onload = ev => {
     try {
-      limparEditor(); preencherEditor(JSON.parse(ev.target.result));
-      saveToLocal(); atualizarPreview(); setStatus("✓ JSON carregado com sucesso","load-ok");
+      const data = JSON.parse(ev.target.result);
+      const migratedData = migrateDataFormat(data); // Migração automática
+      limparEditor(); preencherEditor(migratedData);
+      saveToLocal(); atualizarPreview(); setStatus("✓ JSON carregado com sucesso (migrado se necessário)","load-ok");
     } catch(err) { setStatus("⚠ Arquivo inválido","load-err"); }
   };
   reader.readAsText(file);
@@ -1014,9 +1016,78 @@ function carregarDoUsuario(file) {
 document.getElementById("jsonFileInput").addEventListener("change", ev => { if(ev.target.files[0]) carregarDoUsuario(ev.target.files[0]); });
 
 /* ============================================================
+   MIGRAÇÃO RETROCOMPATÍVEL — Converte formato antigo para novo
+   Formato antigo: { pastas[], links[] }
+   Formato novo:   { items[] com type:"folder"|"link" }
+   ============================================================ */
+function migrateDataFormat(data) {
+  // Se já tem items[], está no formato novo
+  if (data.items && Array.isArray(data.items)) {
+    return data; // Já está no formato correto
+  }
+
+  // Se tem pastas[] ou links[], está no formato antigo - migrar
+  if (data.pastas || data.links) {
+    console.log("🔄 Migrando dados do formato antigo para o novo...");
+
+    const migratedData = { ...data };
+    migratedData.items = [];
+
+    // Migrar pastas antigas
+    if (data.pastas && Array.isArray(data.pastas)) {
+      data.pastas.forEach(pasta => {
+        const migratedPasta = {
+          id: pasta.id || generateId(),
+          type: "folder",
+          nome: pasta.nome || "",
+          topic: pasta.topic || "",
+          icon: pasta.icon || pasta.Icon || "", // Suporte para Icon antigo
+          iconColor: pasta.iconColor || "",
+          textColor: pasta.textColor || "",
+          fontSize: pasta.fontSize || "",
+          links: pasta.links || []
+        };
+        migratedData.items.push(migratedPasta);
+      });
+    }
+
+    // Migrar links diretos antigos
+    if (data.links && Array.isArray(data.links)) {
+      data.links.forEach(link => {
+        const migratedLink = {
+          id: link.id || generateId(),
+          type: "link",
+          nome: link.nome || "",
+          topic: link.topic || "",
+          url: link.url || "",
+          icon: link.icon || "",
+          iconColor: link.iconColor || "",
+          textColor: link.textColor || "",
+          fontSize: link.fontSize || ""
+        };
+        migratedData.items.push(migratedLink);
+      });
+    }
+
+    // Remover campos antigos
+    delete migratedData.pastas;
+    delete migratedData.links;
+
+    console.log("✅ Migração concluída! Dados convertidos para o novo formato.");
+    return migratedData;
+  }
+
+  // Se não tem nenhum dos formatos, retornar como está
+  return data;
+}
+
+/* ============================================================
    PREENCHER EDITOR
    ============================================================ */
 function preencherEditor(data) {
+  // Aplicar migração automática se necessário
+  data = migrateDataFormat(data);
+
   const set = (id, val) => { const el=document.getElementById(id); if(el) el.value=val||""; };
   set("p-foto", data.profile); set("p-nome", data.name); set("p-desc", data.description);
   set("p-bg",   data.background); set("p-theme", data.theme);
@@ -1025,15 +1096,15 @@ function preencherEditor(data) {
   if (data.background) { const img=document.getElementById("bg-preview"); if(img){img.src=data.background;img.style.display="block";} }
 
   (data.redes  ||[]).forEach(r => addRede(r));
-  
-  // Suporta novo modelo (items) e modelo antigo (pastas + links)
+
+  // Suporta novo modelo (items) e modelo antigo (pastas + links) - agora com migração automática
   if (data.items) {
     data.items.forEach(item => {
       if (item.type === "folder") addPasta(item);
       else if (item.type === "link") addDirectLink(item);
     });
   } else {
-    // Fallback para modelo antigo
+    // Fallback para modelo antigo (não deveria acontecer após migração)
     (data.pastas ||[]).forEach(p => addPasta(p));
     (data.links  ||[]).forEach(l => addDirectLink(l));
   }
