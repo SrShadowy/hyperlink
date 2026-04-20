@@ -971,8 +971,7 @@ function downloadJSON() {
 }
 
 function BaixarPacote() {
-  // Link para o pacote completo do GitHub
-  const url = "https://github.com/user-attachments/files/26864499/Release.webonce.zip";
+  const url = "https://github.com/user-attachments/files/26880254/Release.zip";
   const a = document.createElement("a");
   a.href = url;
   a.target = "_blank";
