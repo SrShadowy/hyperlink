@@ -32,8 +32,15 @@
         <main class="editor-panel">
 
             <header class="editor-header">
-                <h1>Editor de Perfil</h1>
-                <p>Configure o seu <code>data.json</code> sem precisar editar código</p>
+                <div class="editor-header-row">
+                    <div>
+                        <h1>Editor de Perfil</h1>
+                        <p>Configure o seu <code>data.json</code> sem precisar editar código</p>
+                    </div>
+                    <div id="save-indicator" class="save-indicator">
+                        <i class="fas fa-cloud"></i> Salvo
+                    </div>
+                </div>
             </header>
 
             <div id="load-status" class="load-msg" style="display:none"></div>
@@ -95,9 +102,14 @@
                 <button class="btn btn-add" id="btn-add-rede"><i class="fas fa-plus"></i> Adicionar rede</button>
             </section>
 
+            
             <!-- PASTAS -->
             <section id="sec-pastas" class="section">
                 <p class="section-title">Pastas</p>
+
+                <div id="items-list"></div>
+
+
                 <div id="pastas-list"></div>
                 <button class="btn btn-add" id="btn-add-pasta"><i class="fas fa-plus"></i> Adicionar pasta</button>
 
@@ -118,7 +130,11 @@
                     <label for="jsonFileInput" class="btn">
                         <i class="fas fa-file-import"></i> Carregar JSON
                     </label>
-                    <input type="file" id="jsonFileInput" style="visibility: hidden;" accept=".json" />
+                    <input type="file" id="jsonFileInput" style="visibility: hidden; display: none;" accept=".json" />
+
+                    <button class="btn" id="btn-reset-json" title="Descarta o rascunho e recarrega o data.json do projeto">
+                        <i class="fas fa-rotate-left"></i> Resetar para data.json
+                    </button>
 
                     <span id="copy-ok" class="copy-msg">Copiado!</span>
 

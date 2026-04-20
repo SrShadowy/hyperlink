@@ -443,3 +443,238 @@ textarea { resize: vertical; min-height: 70px; line-height: 1.5; }
   .editor-panel  { padding: 1.5rem 1rem 3rem; }
 }
 
+
+/* ---------- Header row com indicador de salvo ---------- */
+.editor-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* ---------- Indicador "Salvo" ---------- */
+.save-indicator {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: #5DCAA5;
+  background: #132820;
+  border: 1px solid #2a5040;
+  border-radius: 8px;
+  padding: 5px 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.save-indicator.visible {
+  opacity: 1;
+}
+
+/* ---------- Icon picker — linha com input + botão de arquivo ---------- */
+.icon-input-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.icon-input-row input[type="text"] {
+  flex: 1;
+}
+
+.btn-file {
+  flex-shrink: 0;
+  padding: 7px 12px;
+  cursor: pointer;
+  border-color: #2a2a2a;
+}
+
+/* ---------- Thumb da imagem carregada + aviso ---------- */
+.icon-thumb-wrap {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 8px;
+  padding: 8px 10px;
+  background: #1a1400;
+  border: 1px solid #5a4200;
+  border-radius: 8px;
+}
+
+.icon-thumb-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 4px;
+  background: #111;
+  flex-shrink: 0;
+}
+
+.icon-thumb-notice {
+  font-size: 12px;
+  color: #e0a800;
+  line-height: 1.5;
+}
+
+.icon-thumb-notice i {
+  margin-right: 4px;
+}
+
+.icon-thumb-notice code {
+  background: #2a1e00;
+  color: #f0c040;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-size: 11px;
+}
+
+/* ---------- Color picker das redes sociais ---------- */
+.color-picker-group {
+  margin-top: 6px;
+}
+
+.color-picker-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.color-swatch {
+  width: 36px !important;
+  height: 36px !important;
+  padding: 2px !important;
+  border-radius: 8px !important;
+  border: 1px solid #333 !important;
+  background: #0f0f0f !important;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.color-value-label {
+  font-size: 12px;
+  color: #888;
+  font-family: monospace;
+  flex: 1;
+  min-width: 0;
+}
+
+.btn-sm {
+  padding: 4px 10px;
+  font-size: 12px;
+}
+
+/* ============================================================
+   LINK-ROW colapsável (igual folder-card)
+   ============================================================ */
+.link-row-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.link-row-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.link-row-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: #ccc;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.link-row.collapsed .link-row-body {
+  display: none;
+}
+
+/* ============================================================
+   STYLE BLOCK — ícone + cor ícone + cor texto + font size
+   ============================================================ */
+.style-block {
+  background: #0f0f0f;
+  border: 1px solid #222;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-top: 8px;
+}
+
+.style-extra {
+  margin-bottom: 8px;
+}
+
+/* ============================================================
+   COLOR PICKER ROW (genérico, usado em todo lado)
+   ============================================================ */
+.color-picker-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.cpick-label {
+  font-size: 12px;
+  color: #666;
+  min-width: 54px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.color-swatch {
+  width: 34px !important;
+  height: 34px !important;
+  padding: 2px !important;
+  border-radius: 7px !important;
+  border: 1px solid #333 !important;
+  background: #0f0f0f !important;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.color-value-label {
+  font-size: 11px;
+  color: #777;
+  font-family: monospace;
+  flex: 1;
+  min-width: 0;
+}
+
+.btn-sm {
+  padding: 4px 9px;
+  font-size: 12px;
+}
+
+/* folder-header com botão de remover à direita */
+.folder-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.folder-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: #ccc;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* card colapsável (links diretos) */
+.card.collapsed .folder-body,
+.folder-card.collapsed .folder-body {
+  display: none;
+}

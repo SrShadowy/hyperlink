@@ -8,12 +8,12 @@
     {
       "nome": "X",
       "url": "https://x.com/SrShadowy",
-      "icon": "fab fa-x-twitter"
+      "icon": "fab fa-twitter"
     },
     {
       "nome": "Github",
       "url": "https://github.com/srshadowy",
-      "icon": "fab fa-github\" style=\"color: rgb(0, 64, 255);"
+      "icon": "fab fa-github"
     },
     {
       "nome": "Discord",
@@ -42,19 +42,10 @@
           "url": "https://github.com/SrShadowy/Teclado_Sonoro",
           "icon": "fas fa-star"
         }
-      ],
-      "fontSize": "14"
+      ]
     }
   ],
   "links": [
-    {
-      "topic": "Projetos",
-      "nome": "Linux Keyboard events",
-      "url": "https://github.com/SrShadowy/linux-getting-keyboard-events",
-      "icon": "fas fa-gamepad\" style=\"font-size: 13px;",
-      "textColor": "rgb(255, 0, 0)",
-      "fontSize": "13"
-    },
     {
       "topic": "",
       "nome": "testando conhecimentos",
@@ -62,10 +53,10 @@
       "icon": "fas fa-link"
     },
     {
-      "topic": "",
-      "nome": "Novo Overwatch",
-      "url": "daatataaa",
-      "icon": "fab fa-x-twitter"
+      "topic": "Projetos",
+      "nome": "Linux Keyboard events",
+      "url": "https://github.com/SrShadowy/linux-getting-keyboard-events",
+      "icon": "fas fa-gamepad"
     }
   ]
 }
