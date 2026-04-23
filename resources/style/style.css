@@ -51,10 +51,15 @@ body.light-theme {
 #profile {
   width: 100px;
   height: 100px;
+  aspect-ratio: 1;
   border-radius: 50%;
   object-fit: cover;
+  object-position: center;
   margin-bottom: 10px;
   align-self: center;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 #description {
@@ -240,4 +245,14 @@ body.light-theme .items-container::-webkit-scrollbar-thumb:hover {
 
 body.light-theme .items-container {
   scrollbar-color: #c0c0c0 transparent;
+}
+
+#me{
+  display: block;
+  opacity: 50%;
+  position: absolute;
+  right: 0px;
+  bottom: 5px;
+  font-size: small;
+  margin: 10px;
 }

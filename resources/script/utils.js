@@ -71,15 +71,25 @@ function hexToRgb(hex) {
   return `rgb(${r}, ${g}, ${b})`;
 }
 
+// Mapa de cores CSS comuns - MUITO mais rápido que canvas!
+const CSS_COLOR_MAP = {
+  'red': '#ff0000', 'green': '#008000', 'blue': '#0000ff',
+  'white': '#ffffff', 'black': '#000000', 'yellow': '#ffff00',
+  'cyan': '#00ffff', 'magenta': '#ff00ff', 'gray': '#808080',
+  'orange': '#ffa500', 'purple': '#800080', 'pink': '#ffc0cb',
+  'brown': '#a52a2a', 'navy': '#000080', 'teal': '#008080',
+  'lime': '#00ff00', 'maroon': '#800000', 'olive': '#808000'
+};
+
 /**
- * Tenta converter uma string de cor (rgb, rgba, hex, nome) para hex #rrggbb
- * Usado para preencher o <input type="color"> ao carregar um JSON existente.
- * @param {string} color - Ex: "rgb(29, 155, 240)" ou "#1d9bf0"
+ * Converte cor (rgb, rgba, hex, nome CSS) para hex #rrggbb
+ * Otimizado: sem canvas lento! Usa mapa de cores CSS.
+ * @param {string} color - Ex: "rgb(29, 155, 240)" ou "#1d9bf0" ou "red"
  * @returns {string} hex ou "" se não conseguir converter
  */
 function colorToHex(color) {
   if (!color) return "";
-  color = color.trim();
+  color = color.trim().toLowerCase();
   if (color.startsWith("#")) return color.length === 7 ? color : "";
 
   const rgbMatch = color.match(/rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/);
@@ -87,18 +97,5 @@ function colorToHex(color) {
     const toHex = n => parseInt(n).toString(16).padStart(2, "0");
     return `#${toHex(rgbMatch[1])}${toHex(rgbMatch[2])}${toHex(rgbMatch[3])}`;
   }
-
-  // Fallback via canvas para nomes CSS ("red", "blue", etc.)
-  try {
-    const canvas  = document.createElement("canvas");
-    canvas.width  = 1; canvas.height = 1;
-    const ctx = canvas.getContext("2d");
-    ctx.fillStyle = color;
-    ctx.fillRect(0, 0, 1, 1);
-    const [r, g, b] = ctx.getImageData(0, 0, 1, 1).data;
-    const toHex = n => n.toString(16).padStart(2, "0");
-    return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
-  } catch (_) {
-    return "";
-  }
+  return CSS_COLOR_MAP[color] || "";
 }

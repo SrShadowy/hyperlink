@@ -1,36 +1,41 @@
 {
   "profile": "https://srshadowy.github.io/img/per.gif",
   "name": "SrShadowy",
-  "description": "Eh... eu sou dev.",
+  "description": "Um programador autodidata desde os 10 anos. Apaixonado por C++, reverse engineering e game dev. Curioso, astuto e sempre aprendendo.",
   "background": "",
   "theme": "dark",
   "redes": [
+    {
+      "nome": "GitHub",
+      "url": "https://github.com/srshadowy",
+      "icon": "fab fa-github"
+    },
     {
       "nome": "X",
       "url": "https://x.com/SrShadowy",
       "icon": "fab fa-x-twitter"
     },
     {
-      "nome": "Github",
-      "url": "https://github.com/srshadowy",
-      "icon": "fab fa-github\" style=\"color: rgb(0, 64, 255);"
-    },
-    {
       "nome": "Discord",
       "url": "https://discord.gg/ayu6HFuSdu",
       "icon": "fab fa-discord"
+    },
+    {
+      "nome": "Website",
+      "url": "https://srshadowy.github.io/",
+      "icon": "fas fa-globe"
     }
   ],
-  "pastas": [
+  "items": [
     {
-      "id": "mo6i9e88cy7ic2m7ece",
+      "id": "mo6s1jy9r2ktpz8vfw",
       "type": "folder",
       "nome": "Game Dev & Graphics",
       "topic": "Desenvolvimento",
-      "icon": "fas fa-cube\" style=\"color: rgb(75, 192, 192); font-size: 14px;",
-      "iconColor": "rgb(75, 192, 192)",
-      "textColor": "rgb(75, 192, 192)",
-      "fontSize": "14",
+      "icon": "fas fa-gamepad\" style=\"color: rgb(255, 0, 0); font-size: 15px;",
+      "iconColor": "rgb(255, 0, 0)",
+      "textColor": "rgb(82, 74, 191)",
+      "fontSize": "15",
       "links": [
         {
           "nome": "JSFILE - Game Engine",
@@ -47,7 +52,7 @@
       ]
     },
     {
-      "id": "mo6i9e86e46h5hsnq89",
+      "id": "mo6s1jya34gvt5u2liz",
       "type": "folder",
       "nome": "Ferramentas & Utilitários",
       "topic": "Principais",
@@ -59,12 +64,14 @@
         {
           "nome": "App Launcher",
           "url": "https://github.com/SrShadowy/AppLauncher",
-          "icon": "fas fa-book"
+          "icon": "fas fa-rocket",
+          "textColor": "rgb(54, 162, 235)"
         },
         {
           "nome": "Memory Scanner",
           "url": "https://github.com/SrShadowy/MemoryScanner",
-          "icon": "fas fa-link"
+          "icon": "fas fa-microchip",
+          "textColor": "rgb(75, 192, 192)"
         },
         {
           "nome": "Mouse Simulator",
@@ -87,7 +94,7 @@
       ]
     },
     {
-      "id": "mo6i9e88ce7p7kdqkn6",
+      "id": "mo6s1jycf6l48w46otf",
       "type": "folder",
       "nome": "Projetos Web",
       "topic": "Frontend",
@@ -105,12 +112,31 @@
         {
           "nome": "Teclado Sonoro",
           "url": "https://github.com/SrShadowy/Teclado_Sonoro",
-          "icon": "fas fa-star"
+          "icon": "fas fa-music",
+          "textColor": "rgb(75, 192, 192)"
+        },
+        {
+          "nome": "PyScript - Jogo da Velha",
+          "url": "https://github.com/SrShadowy/PyScript-Jogo-Da-Velha",
+          "icon": "fas fa-chess",
+          "textColor": "rgb(153, 102, 255)"
+        },
+        {
+          "nome": "Gallery",
+          "url": "https://github.com/SrShadowy/gallery",
+          "icon": "fas fa-image",
+          "textColor": "rgb(255, 159, 64)"
+        },
+        {
+          "nome": "ImNotVM.JS",
+          "url": "https://github.com/SrShadowy/ImNotVM.JS",
+          "icon": "fas fa-code",
+          "textColor": "rgb(201, 203, 207)"
         }
       ]
     },
     {
-      "id": "mo6i9e89dpwt6ey9qlo",
+      "id": "mo6s1jyde65s9xbhc5k",
       "type": "folder",
       "nome": "Backend & APIs",
       "topic": "Backend",
@@ -140,7 +166,7 @@
       ]
     },
     {
-      "id": "mo6i9e8a4dihlyuhsbe",
+      "id": "mo6s1jyezsj49ui9ol",
       "type": "folder",
       "nome": "Security & Reverse Eng",
       "topic": "Segurança",
@@ -182,7 +208,7 @@
       ]
     },
     {
-      "id": "mo6i9e8bucdjqesadme",
+      "id": "mo6s1jygssitfp4l58p",
       "type": "link",
       "topic": "Desenvolvimento",
       "nome": "Reshader",
@@ -193,7 +219,7 @@
       "fontSize": ""
     },
     {
-      "id": "mo6i9e8cbs1it0eo5h7",
+      "id": "mo6s1jyg30mwi498j7w",
       "type": "link",
       "topic": "Colaborações",
       "nome": "ImGuiBuilder - Code Building",
@@ -204,7 +230,7 @@
       "fontSize": ""
     },
     {
-      "id": "mo6i9e8czy8ry54wh9",
+      "id": "mo6s1jygg7f5dbzsqee",
       "type": "link",
       "topic": "Mais",
       "nome": "Entre em contato",
@@ -215,7 +241,7 @@
       "fontSize": ""
     },
     {
-      "id": "mo6i9e8c710vy1gmyks",
+      "id": "mo6s1jyglh4qxoulkf",
       "type": "link",
       "topic": "Mais",
       "nome": "Meu Portfolio",
