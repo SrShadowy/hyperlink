@@ -28,14 +28,14 @@
   ],
   "items": [
     {
-      "id": "mo6i9e88cy7ic2m7ece",
+      "id": "mo6s1jy9r2ktpz8vfw",
       "type": "folder",
       "nome": "Game Dev & Graphics",
       "topic": "Desenvolvimento",
-      "icon": "fas fa-cube\" style=\"color: rgb(75, 192, 192); font-size: 14px;",
-      "iconColor": "rgb(75, 192, 192)",
-      "textColor": "rgb(75, 192, 192)",
-      "fontSize": "14",
+      "icon": "fas fa-gamepad\" style=\"color: rgb(255, 0, 0); font-size: 15px;",
+      "iconColor": "rgb(255, 0, 0)",
+      "textColor": "rgb(82, 74, 191)",
+      "fontSize": "15",
       "links": [
         {
           "nome": "JSFILE - Game Engine",
@@ -52,7 +52,7 @@
       ]
     },
     {
-      "id": "mo6i9e86e46h5hsnq89",
+      "id": "mo6s1jya34gvt5u2liz",
       "type": "folder",
       "nome": "Ferramentas & Utilitários",
       "topic": "Principais",
@@ -94,7 +94,7 @@
       ]
     },
     {
-      "id": "mo6i9e88ce7p7kdqkn6",
+      "id": "mo6s1jycf6l48w46otf",
       "type": "folder",
       "nome": "Projetos Web",
       "topic": "Frontend",
@@ -136,7 +136,7 @@
       ]
     },
     {
-      "id": "mo6i9e89dpwt6ey9qlo",
+      "id": "mo6s1jyde65s9xbhc5k",
       "type": "folder",
       "nome": "Backend & APIs",
       "topic": "Backend",
@@ -166,7 +166,7 @@
       ]
     },
     {
-      "id": "mo6i9e8a4dihlyuhsbe",
+      "id": "mo6s1jyezsj49ui9ol",
       "type": "folder",
       "nome": "Security & Reverse Eng",
       "topic": "Segurança",
@@ -208,7 +208,7 @@
       ]
     },
     {
-      "id": "mo6i9e8bucdjqesadme",
+      "id": "mo6s1jygssitfp4l58p",
       "type": "link",
       "topic": "Desenvolvimento",
       "nome": "Reshader",
@@ -219,7 +219,7 @@
       "fontSize": ""
     },
     {
-      "id": "mo6i9e8cbs1it0eo5h7",
+      "id": "mo6s1jyg30mwi498j7w",
       "type": "link",
       "topic": "Colaborações",
       "nome": "ImGuiBuilder - Code Building",
@@ -230,7 +230,7 @@
       "fontSize": ""
     },
     {
-      "id": "mo6i9e8czy8ry54wh9",
+      "id": "mo6s1jygg7f5dbzsqee",
       "type": "link",
       "topic": "Mais",
       "nome": "Entre em contato",
@@ -241,7 +241,7 @@
       "fontSize": ""
     },
     {
-      "id": "mo6i9e8c710vy1gmyks",
+      "id": "mo6s1jyglh4qxoulkf",
       "type": "link",
       "topic": "Mais",
       "nome": "Meu Portfolio",

@@ -1,0 +1,62 @@
+{
+  "profile": "https://srshadowy.github.io/img/per.gif",
+  "name": "SrShadowy",
+  "description": "Eh... eu sou dev.",
+  "background": "",
+  "theme": "dark",
+  "redes": [
+    {
+      "nome": "X",
+      "url": "https://x.com/SrShadowy",
+      "icon": "fab fa-twitter"
+    },
+    {
+      "nome": "Github",
+      "url": "https://github.com/srshadowy",
+      "icon": "fab fa-github"
+    },
+    {
+      "nome": "Discord",
+      "url": "https://discord.gg/ayu6HFuSdu",
+      "icon": "fab fa-discord"
+    }
+  ],
+  "pastas": [
+    {
+      "nome": "Programinhas",
+      "topic": "Projetos",
+      "Icon": "EldenRing.png",
+      "links": [
+        {
+          "nome": "App launcher",
+          "url": "https://github.com/SrShadowy/AppLauncher",
+          "icon": "fas fa-book"
+        },
+        {
+          "nome": "Memory Scanner",
+          "url": "https://github.com/SrShadowy/MemoryScanner",
+          "icon": "fas fa-link"
+        },
+        {
+          "nome": "Teclado virtual sonoro",
+          "url": "https://github.com/SrShadowy/Teclado_Sonoro",
+          "icon": "fas fa-star"
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "topic": "",
+      "nome": "testando conhecimentos",
+      "url": "https://srshadowy.github.io/gallery/about.html",
+      "icon": "fas fa-link"
+    },
+    {
+      "topic": "Projetos",
+      "nome": "Linux Keyboard events",
+      "url": "https://github.com/SrShadowy/linux-getting-keyboard-events",
+      "icon": "fas fa-gamepad"
+    }
+  ]
+}

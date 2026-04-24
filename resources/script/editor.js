@@ -6,25 +6,74 @@ const DATA_JSON_PATH   = "./resources/data.json";
 const LOCAL_STORAGE_KEY = "hyperlink-editor";
 
 /* ============================================================
-   ÍCONES FA DISPONÍVEIS
+   ÍCONES MAIS COMUNS
    ============================================================ */
 const FA_ICONS = [
-  { l:"Instagram",  v:"fab fa-instagram",  i:"fab fa-instagram"  },
-  { l:"Twitter/X",  v:"fab fa-x-twitter",  i:"fab fa-x-twitter"  },
-  { l:"Twitch",     v:"fab fa-twitch",      i:"fab fa-twitch"     },
-  { l:"YouTube",    v:"fab fa-youtube",     i:"fab fa-youtube"    },
-  { l:"Discord",    v:"fab fa-discord",     i:"fab fa-discord"    },
-  { l:"TikTok",     v:"fab fa-tiktok",      i:"fab fa-tiktok"     },
-  { l:"GitHub",     v:"fab fa-github",      i:"fab fa-github"     },
-  { l:"LinkedIn",   v:"fab fa-linkedin",    i:"fab fa-linkedin"   },
-  { l:"Spotify",    v:"fab fa-spotify",     i:"fab fa-spotify"    },
-  { l:"Reddit",     v:"fab fa-reddit",      i:"fab fa-reddit"     },
-  { l:"Facebook",   v:"fab fa-facebook",    i:"fab fa-facebook"   },
-  { l:"Link",       v:"fas fa-link",        i:"fas fa-link"       },
-  { l:"Livro/Guia", v:"fas fa-book",        i:"fas fa-book"       },
-  { l:"Vídeo",      v:"fas fa-video",       i:"fas fa-video"      },
-  { l:"Gamepad",    v:"fas fa-gamepad",     i:"fas fa-gamepad"    },
-  { l:"Star",       v:"fas fa-star",        i:"fas fa-star"       },
+  { l:"Instagram",        v:"fab fa-instagram",       i:"fab fa-instagram"       },
+  { l:"Twitter / X",     v:"fab fa-x-twitter",       i:"fab fa-x-twitter"       },
+  { l:"Twitch",          v:"fab fa-twitch",          i:"fab fa-twitch"          },
+  { l:"YouTube",         v:"fab fa-youtube",         i:"fab fa-youtube"         },
+  { l:"Discord",         v:"fab fa-discord",         i:"fab fa-discord"         },
+  { l:"TikTok",          v:"fab fa-tiktok",          i:"fab fa-tiktok"          },
+  { l:"GitHub",          v:"fab fa-github",          i:"fab fa-github"          },
+  { l:"LinkedIn",        v:"fab fa-linkedin",        i:"fab fa-linkedin"        },
+  { l:"Spotify",         v:"fab fa-spotify",         i:"fab fa-spotify"         },
+  { l:"Reddit",          v:"fab fa-reddit",          i:"fab fa-reddit"          },
+  { l:"Facebook",        v:"fab fa-facebook",        i:"fab fa-facebook"        },
+  { l:"WhatsApp",        v:"fab fa-whatsapp",        i:"fab fa-whatsapp"        },
+  { l:"Telegram",        v:"fab fa-telegram",        i:"fab fa-telegram"        },
+  { l:"Pinterest",       v:"fab fa-pinterest",       i:"fab fa-pinterest"       },
+  { l:"Snapchat",        v:"fab fa-snapchat",        i:"fab fa-snapchat"        },
+  { l:"Steam",           v:"fab fa-steam",           i:"fab fa-steam"           },
+  { l:"Patreon",         v:"fab fa-patreon",         i:"fab fa-patreon"         },
+  { l:"Medium",          v:"fab fa-medium",          i:"fab fa-medium"          },
+  { l:"Stack Overflow",  v:"fab fa-stack-overflow",  i:"fab fa-stack-overflow"  },
+  { l:"CodePen",         v:"fab fa-codepen",         i:"fab fa-codepen"         },
+  { l:"Behance",         v:"fab fa-behance",         i:"fab fa-behance"         },
+  { l:"Dribbble",        v:"fab fa-dribbble",        i:"fab fa-dribbble"        },
+  { l:"Link",            v:"fas fa-link",            i:"fas fa-link"            },
+  { l:"Livro / Guia",    v:"fas fa-book",            i:"fas fa-book"            },
+  { l:"Vídeo",           v:"fas fa-video",           i:"fas fa-video"           },
+  { l:"Gamepad",         v:"fas fa-gamepad",         i:"fas fa-gamepad"         },
+  { l:"Estrela",         v:"fas fa-star",            i:"fas fa-star"            },
+  { l:"Coração",         v:"fas fa-heart",           i:"fas fa-heart"           },
+  { l:"Envelope",        v:"fas fa-envelope",        i:"fas fa-envelope"        },
+  { l:"Busca",           v:"fas fa-search",          i:"fas fa-search"          },
+  { l:"Usuário",         v:"fas fa-user",            i:"fas fa-user"            },
+  { l:"Usuários",        v:"fas fa-users",           i:"fas fa-users"           },
+  { l:"Trava",           v:"fas fa-lock",            i:"fas fa-lock"            },
+  { l:"Destrava",        v:"fas fa-unlock",          i:"fas fa-unlock"          },
+  { l:"Sino",            v:"fas fa-bell",            i:"fas fa-bell"            },
+  { l:"Câmera",          v:"fas fa-camera",          i:"fas fa-camera"          },
+  { l:"Carrinho",        v:"fas fa-shopping-cart",   i:"fas fa-shopping-cart"   },
+  { l:"Sacola",          v:"fas fa-shopping-bag",    i:"fas fa-shopping-bag"    },
+  { l:"Cartão",          v:"fas fa-credit-card",     i:"fas fa-credit-card"     },
+  { l:"Globo",           v:"fas fa-globe",           i:"fas fa-globe"           },
+  { l:"Música",          v:"fas fa-music",           i:"fas fa-music"           },
+  { l:"Telefone",        v:"fas fa-phone",           i:"fas fa-phone"           },
+  { l:"Mapa",            v:"fas fa-map-marker-alt",  i:"fas fa-map-marker-alt"  },
+  { l:"Calendário",      v:"fas fa-calendar",        i:"fas fa-calendar"        },
+  { l:"Comentário",      v:"fas fa-comment",         i:"fas fa-comment"         },
+  { l:"Raio",            v:"fas fa-bolt",            i:"fas fa-bolt"            },
+  { l:"Fogo",            v:"fas fa-fire",            i:"fas fa-fire"            },
+  { l:"Folha",           v:"fas fa-leaf",            i:"fas fa-leaf"            },
+  { l:"Paleta",          v:"fas fa-palette",         i:"fas fa-palette"         },
+  { l:"Escudo",          v:"fas fa-shield-alt",      i:"fas fa-shield-alt"      },
+  { l:"Foguete",         v:"fas fa-rocket",          i:"fas fa-rocket"          },
+  { l:"Presente",        v:"fas fa-gift",            i:"fas fa-gift"            },
+  { l:"Relógio",         v:"fas fa-clock",           i:"fas fa-clock"           },
+  { l:"Troféu",          v:"fas fa-trophy",          i:"fas fa-trophy"          },
+  { l:"Jornal",          v:"fas fa-newspaper",       i:"fas fa-newspaper"       },
+  { l:"Enviar",          v:"fas fa-paper-plane",     i:"fas fa-paper-plane"     },
+  { l:"Check",           v:"fas fa-check",           i:"fas fa-check"           },
+  { l:"X",               v:"fas fa-xmark",           i:"fas fa-xmark"           },
+  { l:"Mais",            v:"fas fa-plus",            i:"fas fa-plus"            },
+  { l:"Menos",           v:"fas fa-minus",           i:"fas fa-minus"           },
+  { l:"Elipse",          v:"fas fa-ellipsis-h",      i:"fas fa-ellipsis-h"      },
+  { l:"Seta Direita",    v:"fas fa-arrow-right",     i:"fas fa-arrow-right"     },
+  { l:"Seta Esquerda",   v:"fas fa-arrow-left",      i:"fas fa-arrow-left"      },
+  { l:"Chevron Baixo",   v:"fas fa-chevron-down",    i:"fas fa-chevron-down"    },
+  { l:"Menu",            v:"fas fa-bars",            i:"fas fa-bars"            },
 ];
 
 /* ============================================================
@@ -207,7 +256,7 @@ function iconPickerHTML(fieldId, currentValue = "") {
       <div class="icon-input-row">
         <input id="${fieldId}" type="text" value="${esc(currentValue)}"
                placeholder="fab fa-discord, fas fa-heart, etc.">
-        <span class="icon-preview-box" id="${previewId}">
+        <span class="icon-preview-box" id="${previewId}" data-dropdown="${fieldId}-dropdown">
           ${faClass ? `<i class="${faClass}" title="Prévia do ícone"></i>` : '<span style="color:#666">—</span>'}
         </span>
         <label class="btn btn-file" for="${fileId}" title="Escolher imagem do computador">
@@ -220,7 +269,11 @@ function iconPickerHTML(fieldId, currentValue = "") {
         <a href="https://fontawesome.com/search" target="_blank" rel="noopener">
           <i class="fas fa-external-link-alt"></i> Procurar ícones no Font Awesome
         </a>
-        <span class="hint">Cole a classe completa aqui (ex: fab fa-instagram)</span>
+        <span class="hint">Cole a classe completa aqui (ex: fab fa-instagram) ou clique na prévia.</span>
+      </div>
+      <div class="icon-search-dropdown" id="${fieldId}-dropdown" style="display:none">
+        <input type="text" class="icon-search-input" placeholder="Buscar ícone..." />
+        <div class="icon-search-results"></div>
       </div>
       <div id="${thumbId}" class="icon-thumb-wrap" style="display:none">
         <img class="icon-thumb-img" src="" alt="">
@@ -231,6 +284,72 @@ function iconPickerHTML(fieldId, currentValue = "") {
       </div>
     </div>`;
 }
+
+function renderIconResults(dropdownId, icons) {
+  const dropdown = document.getElementById(dropdownId);
+  if (!dropdown) return;
+  const results = dropdown.querySelector(".icon-search-results");
+  if (!results) return;
+
+  results.innerHTML = icons.slice(0, 80).map(icon => `
+    <div class="icon-search-item" data-value="${icon.v}">
+      <i class="${icon.v}"></i>
+      <span>${icon.l}</span>
+      <code>${icon.v}</code>
+    </div>
+  `).join("");
+
+  results.querySelectorAll(".icon-search-item").forEach(item => {
+    item.addEventListener("click", () => {
+      const dropdown = item.closest(".icon-search-dropdown");
+      if (!dropdown) return;
+      const picker = dropdown.closest(".icon-picker-wrap");
+      const targetId = picker?.dataset.pickerId;
+      const targetInput = document.getElementById(targetId);
+      if (!targetInput) return;
+      targetInput.value = item.dataset.value;
+      targetInput.dispatchEvent(new Event("input", { bubbles: true }));
+      dropdown.style.display = "none";
+      debouncedSave();
+      debouncedUpdatePreview();
+    });
+  });
+}
+
+/* Abre / fecha dropdown de busca de ícones */
+document.body.addEventListener("click", e => {
+  const previewBox = e.target.closest(".icon-preview-box");
+  if (previewBox) {
+    const dropdown = document.getElementById(previewBox.dataset.dropdown);
+    if (!dropdown) return;
+    const isOpen = dropdown.style.display === "block";
+    document.querySelectorAll(".icon-search-dropdown").forEach(d => d.style.display = "none");
+    if (!isOpen) {
+      dropdown.style.display = "block";
+      const search = dropdown.querySelector(".icon-search-input");
+      if (search) {
+        search.value = "";
+        renderIconResults(dropdown.id, FA_ICONS);
+        search.focus();
+      }
+    }
+    return;
+  }
+
+  if (!e.target.closest(".icon-search-dropdown") && !e.target.closest(".icon-preview-box")) {
+    document.querySelectorAll(".icon-search-dropdown").forEach(d => d.style.display = "none");
+  }
+});
+
+document.body.addEventListener("input", e => {
+  const searchInput = e.target.closest(".icon-search-input");
+  if (!searchInput) return;
+  const query = searchInput.value.trim().toLowerCase();
+  const dropdown = searchInput.closest(".icon-search-dropdown");
+  if (!dropdown) return;
+  const filtered = query ? FA_ICONS.filter(icon => icon.l.toLowerCase().includes(query) || icon.v.toLowerCase().includes(query)) : FA_ICONS;
+  renderIconResults(dropdown.id, filtered);
+});
 
 /* ============================================================
    HELPER — Bloco de estilo (ícone + cor do ícone + cor do texto + font size)
